@@ -1,0 +1,16 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.env
+
+outputs/
+*.log
+
+*.gml
+*.graphml
+
+!dataset/tasks.json
+!dataset/documents/
+!dataset/graph/
+!configs/config.yaml
