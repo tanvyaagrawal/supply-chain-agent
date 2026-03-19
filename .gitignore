@@ -14,3 +14,4 @@ outputs/
 !dataset/documents/
 !dataset/graph/
 !configs/config.yaml
+.DS_Store
