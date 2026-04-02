@@ -1,0 +1,59 @@
+{
+  "document_id": "doc_ev_battery_chain.json",
+  "title": "ElectroVan EV Battery Pack Supply Chain",
+  "type": "supply_chain_graph",
+  "entities": [
+    {
+      "id": "ChileMine Ltd",
+      "type": "raw_material_supplier",
+      "tier": 3,
+      "location": "Atacama Desert, Chile",
+      "materials": ["lithium carbonate", "lithium hydroxide"],
+      "annual_output_tonnes": 45000,
+      "key_dependencies": ["Chilean government water permits", "Atacama water table levels"],
+      "geopolitical_risk_score": 6.2,
+      "environmental_risk": "HIGH (water scarcity, indigenous land disputes)",
+      "export_regions": ["South Korea", "Japan", "China"]
+    },
+    {
+      "id": "KoreanCell Co",
+      "type": "component_manufacturer",
+      "tier": 2,
+      "location": "Ulsan, South Korea",
+      "products": ["lithium-ion cells", "battery modules"],
+      "input_materials": ["lithium carbonate from ChileMine"],
+      "annual_capacity_GWh": 35,
+      "geopolitical_risk_score": 3.5,
+      "natural_disaster_risk": "MEDIUM (typhoon, seismic)",
+      "cybersecurity_risk": "HIGH (OT/IT systems, prior sector attacks)",
+      "customers": ["AutoNova Inc", "ElectroCar UK"]
+    },
+    {
+      "id": "AutoNova Inc",
+      "type": "manufacturer",
+      "tier": 1,
+      "location": "Wolfsburg, Germany",
+      "products": ["ElectroVan EV", "ElectroVan EV Battery Pack"],
+      "input_components": ["lithium-ion cells from KoreanCell Co"],
+      "battery_pack_per_vehicle": 1,
+      "eu_battery_regulation_compliance": "IN PROGRESS (2026 deadline)",
+      "safety_stock_days": 30
+    }
+  ],
+  "relationships": [
+    {"from": "ChileMine Ltd", "to": "KoreanCell Co", "type": "SUPPLIES", "material": "lithium carbonate", "share": 0.65},
+    {"from": "KoreanCell Co", "to": "AutoNova Inc", "type": "SUPPLIES", "component": "lithium-ion cells", "share": 1.0},
+    {"from": "AutoNova Inc", "to": "ElectroVan EV Battery Pack", "type": "ASSEMBLES"}
+  ],
+  "regulatory_context": {
+    "EU_Battery_Regulation_2023": {
+      "effective": "2026",
+      "requirements": ["full supply chain carbon disclosure", "recycled content thresholds", "water usage reporting"],
+      "compliance_gap": "ChileMine water usage data not yet disclosed"
+    }
+  },
+  "risk_events": [
+    {"event": "Chile water restriction 6 months", "probability": "MEDIUM", "nodes_affected": ["ChileMine Ltd", "KoreanCell Co", "AutoNova Inc"], "propagation_days": [0, 30, 60]},
+    {"event": "KoreanCell cyberattack on OT", "probability": "LOW-MEDIUM", "impact": "HIGH"}
+  ]
+}

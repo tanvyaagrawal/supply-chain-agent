@@ -1,0 +1,17 @@
+{
+  "document_id": "doc_foodcorp_packaging.json",
+  "title": "FoodCorp USA & PharmaPack EU - Packaging Supply Chain",
+  "type": "supply_chain_graph",
+  "entities": [
+    {"id": "PackPlast Vietnam", "type": "packaging_supplier", "location": "Hanoi, Vietnam", "certifications": [], "iso_22000_status": "NOT CERTIFIED", "customers": ["FoodCorp USA", "PharmaPack EU"]},
+    {"id": "FoodCorp USA", "type": "food_manufacturer", "packaging_inventory_days": 45, "packaging_source": "PackPlast Vietnam (primary)"},
+    {"id": "PharmaPack EU", "type": "pharma_manufacturer", "location": "Brussels, Belgium", "packaging_inventory_days": 10, "packaging_source": "PackPlast Vietnam (primary)"}
+  ],
+  "relationships": [
+    {"from": "PackPlast Vietnam", "to": "FoodCorp USA", "material": "food-grade packaging", "volume_share": 0.8},
+    {"from": "PackPlast Vietnam", "to": "PharmaPack EU", "material": "pharmaceutical packaging", "volume_share": 0.9}
+  ],
+  "regulatory_events": [
+    {"regulation": "ISO 22000 Mandate", "deadline_months": 12, "consequence": "export license revocation for non-compliant suppliers"}
+  ]
+}

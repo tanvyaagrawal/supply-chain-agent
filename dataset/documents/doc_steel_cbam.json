@@ -1,0 +1,19 @@
+{
+  "document_id": "doc_steel_cbam.json",
+  "title": "Steel Supply Chain & CBAM Risk",
+  "type": "supply_chain_graph",
+  "entities": [
+    {"id": "SteelCo India", "type": "steel_producer", "location": "Jamshedpur, India", "output_tonnes_pa": 8000000, "eu_export_pct": 0.6, "green_steel_readiness": "LOW (BF-BOF primary)", "geopolitical_risk": 3.5},
+    {"id": "CanAlum Canada", "type": "aluminum_producer", "location": "Quebec, Canada", "output_tonnes_pa": 3000000, "geopolitical_risk": 1.5},
+    {"id": "BrazilSteel", "type": "steel_producer", "location": "Volta Redonda, Brazil", "ownership": "PRIVATE (nationalization risk flagged)", "geopolitical_risk": 4.0},
+    {"id": "AutoNova Germany", "type": "automotive_manufacturer", "steel_sources": ["SteelCo India", "CanAlum Canada", "BrazilSteel"]}
+  ],
+  "regulatory_events": [
+    {"name": "EU CBAM", "effective": "2026", "impact": "carbon tariff on non-EU steel/aluminum imports", "estimated_cost_increase_pct": "8-15"}
+  ],
+  "relationships": [
+    {"from": "SteelCo India", "to": "AutoNova Germany", "material": "steel", "volume_share": 0.35},
+    {"from": "CanAlum Canada", "to": "AutoNova Germany", "material": "aluminum", "volume_share": 0.35},
+    {"from": "BrazilSteel", "to": "AutoNova Germany", "material": "steel", "volume_share": 0.30}
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "document_id": "doc_taiwan_supplier.json",
+  "title": "TaiwanChip-3 Supplier Profile",
+  "type": "supplier_profile",
+  "entities": [
+    {
+      "id": "TaiwanChip-3",
+      "type": "supplier",
+      "location": "Hsinchu Science Park, Taiwan",
+      "tier": 2,
+      "components_supplied": ["GPU chips", "microcontrollers", "application processors"],
+      "annual_capacity_wafers": 120000,
+      "certifications": ["ISO 9001", "IATF 16949"],
+      "geopolitical_risk_score": 5.5,
+      "natural_disaster_risk": "HIGH (seismic zone, typhoon corridor)",
+      "export_control_flag": true,
+      "backup_suppliers": ["EUChip GmbH (partial, 40% capacity cover)"],
+      "customers": ["AlphaBot GmbH", "RoboFlex Ltd", "NovaTech Systems"]
+    },
+    {
+      "id": "AlphaBot GmbH",
+      "type": "manufacturer",
+      "location": "Munich, Germany",
+      "products": ["industrial robots", "collaborative arms"],
+      "chip_dependency_pct": 100,
+      "chip_source": "TaiwanChip-3 (sole source)",
+      "safety_stock_days": 21
+    },
+    {
+      "id": "RoboFlex Ltd",
+      "type": "manufacturer",
+      "location": "Lyon, France",
+      "products": ["industrial robotic arms", "grippers"],
+      "chip_dependency_pct": 60,
+      "chip_sources": {
+        "TaiwanChip-3": 0.6,
+        "EUChip GmbH": 0.4
+      },
+      "safety_stock_days": 18
+    }
+  ],
+  "relationships": [
+    {"from": "TaiwanChip-3", "to": "AlphaBot GmbH", "type": "SUPPLIES", "component": "GPU chips", "share": 1.0},
+    {"from": "TaiwanChip-3", "to": "RoboFlex Ltd", "type": "SUPPLIES", "component": "microcontrollers", "share": 0.6},
+    {"from": "EUChip GmbH", "to": "RoboFlex Ltd", "type": "SUPPLIES", "component": "microcontrollers", "share": 0.4}
+  ],
+  "risk_events": [
+    {"event": "Taiwan Strait tension", "probability": "MEDIUM", "impact": "CRITICAL"},
+    {"event": "Magnitude 6+ earthquake", "probability": "MEDIUM", "impact": "HIGH"},
+    {"event": "Typhoon season disruption", "probability": "HIGH", "impact": "MEDIUM"}
+  ]
+}

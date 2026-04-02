@@ -1,0 +1,20 @@
+{
+  "document_id": "doc_semiconductor_tariff.json",
+  "title": "Semiconductor Dependency & Tariff Risk Map",
+  "type": "risk_knowledge_graph",
+  "entities": [
+    {"id": "TaiwanChip-3", "type": "supplier", "location": "Taiwan", "geopolitical_risk": 5.5, "surge_capacity_multiplier": 1.0},
+    {"id": "EUChip GmbH", "type": "supplier", "location": "Dresden, Germany", "geopolitical_risk": 2.0, "surge_capacity_multiplier": 1.6},
+    {"id": "AlphaBot GmbH", "type": "manufacturer", "china_chip_dependency_pct": 100, "alternatives": []},
+    {"id": "NovaTech Systems", "type": "manufacturer", "location": "Warsaw, Poland", "china_chip_dependency_pct": 80, "alternatives": []},
+    {"id": "RoboFlex Ltd", "type": "manufacturer", "china_chip_dependency_pct": 40, "alternatives": ["EUChip GmbH (partial)"]},
+    {"id": "ScandiTool AB", "type": "manufacturer", "location": "Gothenburg, Sweden", "china_chip_dependency_pct": 15, "alternatives": ["South Korean supplier (85%)"]}
+  ],
+  "relationships": [
+    {"from": "TaiwanChip-3", "to": "AlphaBot GmbH", "share": 1.0},
+    {"from": "TaiwanChip-3", "to": "NovaTech Systems", "share": 0.8},
+    {"from": "TaiwanChip-3", "to": "RoboFlex Ltd", "share": 0.6},
+    {"from": "EUChip GmbH", "to": "RoboFlex Ltd", "share": 0.4},
+    {"from": "TaiwanChip-3", "to": "ScandiTool AB", "share": 0.15}
+  ]
+}

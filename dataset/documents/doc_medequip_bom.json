@@ -1,0 +1,23 @@
+{
+  "document_id": "doc_medequip_bom.json",
+  "title": "MedEquip Ltd - Ventilator Bill of Materials & Supply Chain",
+  "type": "bom_supply_chain",
+  "product": "MK-7 Ventilator",
+  "manufacturer": {"id": "MedEquip Ltd", "location": "Dublin, Ireland"},
+  "bom_components": [
+    {"component": "Microcontrollers", "supplier": "TaiwanChip-3", "origin": "Taiwan", "criticality": "CRITICAL", "geopolitical_event": "Taiwan Strait tension — shipping insurance +300%", "risk_score": 5},
+    {"component": "Aluminum Casing", "supplier": "RussiaMetals Corp", "origin": "Russia", "criticality": "HIGH", "geopolitical_event": "Russia-Ukraine war — Western sanctions active", "risk_score": 8},
+    {"component": "Oxygen Sensors", "supplier": "GermanSens GmbH", "origin": "Germany", "criticality": "HIGH", "geopolitical_event": "None active", "risk_score": 2},
+    {"component": "Plastic Tubing", "supplier": "PetroChemSA Brazil", "origin": "Brazil", "criticality": "MEDIUM", "geopolitical_event": "Brazil 20% plastic export tax", "risk_score": 3}
+  ],
+  "downstream_customers": [
+    {"id": "HealthSystem UK", "type": "hospital_procurement", "contractual_reserve_units": 500, "safety_stock_days": 30, "replenishment_model": "monthly"}
+  ],
+  "relationships": [
+    {"from": "TaiwanChip-3", "to": "MedEquip Ltd", "component": "microcontrollers"},
+    {"from": "RussiaMetals Corp", "to": "MedEquip Ltd", "component": "aluminum casing"},
+    {"from": "GermanSens GmbH", "to": "MedEquip Ltd", "component": "oxygen sensors", "sensor_inventory_days": 60},
+    {"from": "PetroChemSA Brazil", "to": "MedEquip Ltd", "component": "plastic tubing"},
+    {"from": "MedEquip Ltd", "to": "HealthSystem UK", "product": "ventilators"}
+  ]
+}

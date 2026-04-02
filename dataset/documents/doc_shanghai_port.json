@@ -1,0 +1,23 @@
+{
+  "document_id": "doc_shanghai_port.json",
+  "title": "Port of Shanghai - Global Logistics Impact Profile",
+  "type": "logistics_node",
+  "entity": {
+    "id": "Port of Shanghai",
+    "type": "logistics_chokepoint",
+    "location": "Shanghai, China",
+    "annual_TEU": 47000000,
+    "pct_asia_pacific_exports": 0.40,
+    "key_dependent_industries": ["consumer electronics", "automotive", "textiles", "machinery"],
+    "risk_events": [
+      {"type": "COVID lockdown", "historical": "2022 (6-week closure)", "impact": "global supply shock"},
+      {"type": "typhoon", "probability": "MEDIUM"},
+      {"type": "geopolitical blockade", "probability": "LOW"}
+    ],
+    "downstream_impact_by_industry": {
+      "US_consumer_electronics": {"days_to_impact": 7, "reason": "JIT, thin buffer"},
+      "European_automotive": {"days_to_impact": 14, "reason": "safety stock 2-3 weeks"},
+      "Indian_textiles": {"days_to_impact": 25, "reason": "partial domestic alternatives"}
+    }
+  }
+}

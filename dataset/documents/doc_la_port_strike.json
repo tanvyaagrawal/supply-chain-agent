@@ -1,0 +1,19 @@
+{
+  "document_id": "doc_la_port_strike.json",
+  "title": "Port of Los Angeles - Strike Impact Model",
+  "type": "logistics_risk_document",
+  "entity": {
+    "id": "Port of Los Angeles / Long Beach",
+    "type": "port_complex",
+    "pct_US_container_imports": 0.40,
+    "weekly_TEU_capacity": 500000,
+    "key_import_categories": ["electronics", "toys", "apparel", "furniture", "automotive parts"],
+    "diversion_ports": [
+      {"port": "Port of Savannah", "additional_days": 7, "cost_premium_pct": 15},
+      {"port": "Port of NY/NJ", "additional_days": 9, "cost_premium_pct": 18}
+    ],
+    "historical_disruption": "2002 lockout (10 days) — $1B/day economic impact",
+    "seasonal_risk": "October-November (peak pre-holiday import season)"
+  }
+}
+

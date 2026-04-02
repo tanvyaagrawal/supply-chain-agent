@@ -1,0 +1,23 @@
+{
+  "document_id": "doc_shipping_routes.json",
+  "title": "Global Logistics Route Network",
+  "type": "logistics_graph",
+  "routes": [
+    {"id": "R1", "from": "Mumbai, India", "to": "Hamburg, Germany", "via": "Suez Canal", "distance_km": 11000, "normal_days": 18, "cost_usd_per_1000t": 420000, "carbon_kg_per_tonne_km": 0.015},
+    {"id": "R2", "from": "Mumbai, India", "to": "Hamburg, Germany", "via": "Cape of Good Hope", "distance_km": 19500, "normal_days": 32, "cost_usd_per_1000t": 650000, "carbon_kg_per_tonne_km": 0.015},
+    {"id": "R3", "from": "Halifax, Canada", "to": "Hamburg, Germany", "via": "North Atlantic", "distance_km": 6200, "normal_days": 14, "cost_usd_per_1000t": 310000},
+    {"id": "R4", "from": "Santos, Brazil", "to": "Hamburg, Germany", "via": "South Atlantic", "distance_km": 9800, "normal_days": 21, "cost_usd_per_1000t": 380000},
+    {"id": "R5", "from": "Mumbai, India", "to": "Gothenburg, Sweden", "via": "Suez Canal", "distance_km": 11800, "normal_days": 19},
+    {"id": "R6", "from": "Mumbai, India", "to": "New York, USA", "via": "Suez + Atlantic", "distance_km": 14200, "normal_days": 23}
+  ],
+  "chokepoints": [
+    {"name": "Suez Canal", "throughput_TEU_per_day": 50, "risk": "HIGH (geopolitical, vessel congestion)"},
+    {"name": "Strait of Malacca", "throughput_TEU_per_day": 80, "risk": "MEDIUM"},
+    {"name": "Port of Shanghai", "throughput_TEU_per_week": 1000000, "risk": "HIGH (weather, regulatory, COVID-type lockdowns)"}
+  ],
+  "suppliers_to_routes": [
+    {"supplier": "SteelCo India", "primary_route": "R1", "backup_route": "R2"},
+    {"supplier": "CanAlum Canada", "primary_route": "R3"},
+    {"supplier": "BrazilSteel", "primary_route": "R4"}
+  ]
+}

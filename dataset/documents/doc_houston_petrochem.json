@@ -1,0 +1,22 @@
+{
+  "document_id": "doc_houston_petrochem.json",
+  "title": "Houston Petrochemical Complex - Risk Profile",
+  "type": "industrial_cluster_document",
+  "entity": {
+    "id": "Houston Petrochem Complex",
+    "type": "industrial_cluster",
+    "location": "Houston, Texas, USA",
+    "pct_US_petrochemical_output": 0.35,
+    "key_chemicals_produced": ["ethylene", "propylene", "benzene", "butadiene", "ethylene oxide", "propylene glycol"],
+    "downstream_industries": {
+      "plastics": {"chemicals": ["ethylene", "propylene"], "impact": "HIGH"},
+      "automotive": {"chemicals": ["synthetic rubber (butadiene)", "nylon"], "impact": "HIGH"},
+      "pharmaceuticals": {"chemicals": ["ethylene oxide", "propylene glycol"], "impact": "MEDIUM-HIGH"}
+    },
+    "natural_disaster_risk": "CRITICAL (hurricane corridor, flood zone)",
+    "historical_disruptions": [
+      {"event": "Hurricane Harvey 2017", "downtime_weeks": 6, "price_spike_ethylene_pct": 40}
+    ],
+    "typical_recovery_weeks": {"partial": 4, "full": 8}
+  }
+}

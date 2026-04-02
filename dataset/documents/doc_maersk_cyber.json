@@ -1,0 +1,18 @@
+{
+  "document_id": "doc_maersk_cyber.json",
+  "title": "MaerskLogistics Cyber Incident Profile",
+  "type": "risk_event_document",
+  "entity": {
+    "id": "MaerskLogistics",
+    "type": "logistics_provider",
+    "vessels_operated": 120,
+    "ports_served": ["Rotterdam", "Singapore", "Los Angeles", "Hamburg"],
+    "historical_incident": "NotPetya 2017 — $300M loss, 10-day operational disruption"
+  },
+  "cyber_risk_profile": {
+    "ot_it_connectivity": "HIGH",
+    "tracking_system": "centralized cloud-based",
+    "single_point_of_failure": "cargo tracking database",
+    "jit_dependent_customers": ["Toyota Europe", "BMW", "US retail chains"]
+  }
+}

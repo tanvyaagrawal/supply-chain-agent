@@ -1,0 +1,20 @@
+{
+  "document_id": "doc_novatech_router.json",
+  "title": "NovaTech 5G Router Supply Chain Graph",
+  "type": "product_supply_chain",
+  "product": "NovaTech 5G Router",
+  "manufacturer": {"id": "NovaTech Systems", "location": "Warsaw, Poland", "customer": "US Department of Defense (among others)"},
+  "supply_chain_nodes": [
+    {"tier": 3, "id": "MongoliaRE Ltd", "location": "Ulaanbaatar, Mongolia", "output": "rare earth minerals", "geopolitical_risk": 5.7, "export_control_risk": 7, "sanctions_risk": 4, "downstream_dependents": 7, "qualified_alternates": ["MP Materials (USA, partial)", "Lynas Rare Earths (Australia, partial)"]},
+    {"tier": 3, "id": "JapanMag Co", "location": "Osaka, Japan", "output": "permanent magnets", "input": "rare earths from MongoliaRE", "geopolitical_risk": 2.0, "export_control_risk": 3, "sanctions_risk": 1},
+    {"tier": 2, "id": "SingaporeRF Inc", "location": "Singapore", "output": "RF modules", "input": "permanent magnets from JapanMag", "ip_provenance": "RISC-V cores licensed from Chinese IP vendor", "geopolitical_risk": 2.3, "export_control_risk": 4, "sanctions_risk": 1},
+    {"tier": 2, "id": "Vietnam PCB Factory", "location": "Ho Chi Minh City, Vietnam", "output": "PCB assemblies", "input": "RF modules from SingaporeRF", "geopolitical_risk": 3.7, "export_control_risk": 5, "sanctions_risk": 2},
+    {"tier": 1, "id": "NovaTech Systems", "location": "Warsaw, Poland", "output": "5G Router", "input": "PCBs from Vietnam PCB Factory", "geopolitical_risk": 2.0, "export_control_risk": 2, "sanctions_risk": 1}
+  ],
+  "relationships": [
+    {"from": "MongoliaRE Ltd", "to": "JapanMag Co", "material": "rare earth minerals", "buffer_days": 30},
+    {"from": "JapanMag Co", "to": "SingaporeRF Inc", "material": "permanent magnets", "buffer_days": 30},
+    {"from": "SingaporeRF Inc", "to": "Vietnam PCB Factory", "material": "RF modules", "buffer_days": 15},
+    {"from": "Vietnam PCB Factory", "to": "NovaTech Systems", "material": "PCB assemblies", "buffer_days": 15}
+  ]
+}

@@ -1,0 +1,497 @@
+{
+  "dataset_name": "SupplyChainRisk-Bench",
+  "version": "1.0",
+  "description": "Synthetic benchmark dataset for Supply Chain Risk Monitoring Agent (syNNapse'26 PS2). Covers disruption prediction, multi-hop supplier reasoning, geopolitical risk propagation, and logistics route analysis.",
+  "total_tasks": 40,
+  "task_categories": [
+    "disruption_prediction",
+    "multi_hop_supplier_reasoning",
+    "geopolitical_risk_propagation",
+    "route_optimization",
+    "dependency_chain_analysis",
+    "hallucination_trap"
+  ],
+  "tasks": [
+
+    {
+      "id": "SC-001",
+      "category": "disruption_prediction",
+      "difficulty": "easy",
+      "question": "Supplier TaiwanChip-3 is the sole provider of GPU components for Manufacturer AlphaBot in Germany. A magnitude 6.8 earthquake hits Taiwan. What is the most likely immediate impact on AlphaBot's production line?",
+      "context_document": "doc_taiwan_supplier.json",
+      "ground_truth": "AlphaBot's GPU-dependent production line faces an immediate halt or severe slowdown due to the single-source dependency on TaiwanChip-3. Without safety stock or an alternate supplier, production stoppage is expected within 2–4 weeks.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["identifies single-source risk", "mentions production stoppage", "estimates timeline"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-002",
+      "category": "multi_hop_supplier_reasoning",
+      "difficulty": "medium",
+      "question": "Trace the full upstream dependency chain for the final product 'ElectroVan EV Battery Pack' assembled by AutoNova Inc. The battery pack requires Lithium Cells from KoreanCell Co., which in turn sources lithium carbonate from ChileMine Ltd. ChileMine depends on water permits issued by the Chilean government. If Chile enters a 6-month water restriction period, what products downstream are affected and at what tier?",
+      "context_document": "doc_ev_battery_chain.json",
+      "ground_truth": "Tier 1 affected: ChileMine Ltd (cannot extract lithium). Tier 2 affected: KoreanCell Co (lithium carbonate shortage, cell production drops). Tier 3 affected: AutoNova Inc (battery pack shortage). Final product affected: ElectroVan EV Battery Pack. The entire chain is disrupted from Tier 3 upstream.",
+      "reasoning_hops": 4,
+      "evaluation_criteria": ["correct tier identification", "complete chain traversal", "identifies root cause at Tier 3", "no fabricated intermediaries"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-003",
+      "category": "geopolitical_risk_propagation",
+      "difficulty": "medium",
+      "question": "The US imposes a 45% tariff on all semiconductor imports from China. Identify all manufacturers in the knowledge graph that have a direct or indirect Chinese semiconductor dependency and rank them by disruption severity.",
+      "context_document": "doc_semiconductor_tariff.json",
+      "ground_truth": "High severity: AlphaBot (100% Chinese chip dependency), NovaTech Systems (70% dependency). Medium severity: RoboFlex Ltd (40% Chinese chip, has partial EU backup supplier). Low severity: ScandiTool AB (15% Chinese chip, majority sourced from South Korea). The ranking should be: AlphaBot > NovaTech > RoboFlex > ScandiTool.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["correct severity ranking", "uses dependency percentages", "identifies backup suppliers where applicable"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-004",
+      "category": "route_optimization",
+      "difficulty": "easy",
+      "question": "Primary shipping route for SteelCo India to its buyer AutoNova Germany passes through the Suez Canal. Due to Houthi attacks, the Suez Canal route is suspended. What alternative routes exist, and what is the estimated additional cost and lead time for each?",
+      "context_document": "doc_shipping_routes.json",
+      "ground_truth": "Alternative 1: Cape of Good Hope (around Africa) — additional 10–14 days, ~$800K extra fuel/vessel cost per shipment. Alternative 2: Air freight for high-priority components — 2-day delivery but 6–8x cost increase. Alternative 3: Partial reroute via Turkey-overland-Europe — 8 extra days, moderate cost increase, viable for partial loads only.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["identifies Cape route", "mentions cost/time tradeoff", "considers air freight", "does not fabricate non-existent routes"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-005",
+      "category": "dependency_chain_analysis",
+      "difficulty": "hard",
+      "question": "MedEquip Ltd manufactures ventilators. The bill of materials includes: (a) Microcontrollers from TaiwanChip-3, (b) Aluminum casing from RussiaMetals Corp, (c) Oxygen sensors from GermanSens GmbH, (d) Plastic tubing from PetroChemSA Brazil. Geopolitical events: Russia-Ukraine war causes sanctions on RussiaMetals. Taiwan Strait tensions raise shipping insurance by 300%. Brazil imposes a 20% export tax on plastics. Germany has no disruption. Compute an aggregate disruption score for MedEquip Ltd and recommend mitigation actions.",
+      "context_document": "doc_medequip_bom.json",
+      "ground_truth": "Disruption score (out of 10): RussiaMetals sanctions = 8/10 severity (direct embargo risk). Taiwan insurance spike = 5/10 (cost increase, not supply cut). Brazil export tax = 3/10 (cost increase, alternative suppliers exist in Southeast Asia). Overall aggregate score: 7.2/10 (weighted by component criticality). Recommendations: (1) Qualify alternate aluminum supplier in Canada or Turkey. (2) Pre-purchase Taiwan components under long-term contracts before insurance peaks further. (3) Source plastic tubing from Vietnam or Thailand to bypass Brazil tax.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["correct per-factor scoring", "weighted aggregation", "actionable mitigation steps", "no hallucinated suppliers"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-006",
+      "category": "hallucination_trap",
+      "difficulty": "medium",
+      "question": "What is the current real-time inventory level of lithium carbonate at ChileMine Ltd's Atacama facility as of today?",
+      "context_document": "doc_ev_battery_chain.json",
+      "ground_truth": "The knowledge graph does not contain real-time inventory data for ChileMine Ltd. The model should state this limitation and not fabricate an inventory figure. Acceptable answer: 'Real-time inventory data is not available in the current knowledge graph. The system can only reason about structural supply dependencies, not live stock levels.'",
+      "reasoning_hops": 1,
+      "evaluation_criteria": ["refuses to fabricate inventory number", "correctly identifies knowledge graph limitation", "does not hallucinate a figure"],
+      "hallucination_trap": true
+    },
+
+    {
+      "id": "SC-007",
+      "category": "disruption_prediction",
+      "difficulty": "medium",
+      "question": "Port of Shanghai is closed for 3 weeks due to a COVID-19 outbreak lockdown. Which of the following industries experience disruption first: (A) US consumer electronics retail, (B) European automotive assembly, (C) Indian textile manufacturing? Rank them by days-to-impact.",
+      "context_document": "doc_shanghai_port.json",
+      "ground_truth": "Ranking by days-to-impact: (1) US consumer electronics: 7–10 days (high reliance on just-in-time Chinese components, thin buffer stock). (2) European automotive: 14–21 days (slightly larger safety stock, but complex multi-tier dependencies). (3) Indian textile manufacturing: 25–35 days (domestic alternatives partially available, Chinese dyes and equipment are secondary not primary inputs).",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["correct ranking order", "justifies with lead time logic", "mentions safety stock reasoning"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-008",
+      "category": "multi_hop_supplier_reasoning",
+      "difficulty": "hard",
+      "question": "Construct the full supplier graph path from raw earth minerals to the final product 'NovaTech 5G Router'. The path includes: Rare Earth Minerals (MongoliaRE Ltd) → Permanent Magnets (JapanMag Co) → RF Modules (SingaporeRF Inc) → PCB Assembly (Vietnam PCB Factory) → Final Assembly (NovaTech Systems, Poland). Now assume MongoliaRE Ltd faces a 6-month export ban. At which node does the chain first break, and what is the propagation delay to the final product?",
+      "context_document": "doc_novatech_router.json",
+      "ground_truth": "Chain breaks at Node 1 (MongoliaRE Ltd) immediately. Propagation delays: JapanMag Co: ~30 days (existing magnet stock runs out). SingaporeRF Inc: ~60 days (RF module buffer). Vietnam PCB Factory: ~75 days (PCB pipeline). NovaTech Systems final assembly: ~90–100 days. First visible customer impact (router shortage): approximately 3–3.5 months from ban announcement.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["correct propagation sequence", "realistic buffer estimates", "identifies 3-month customer impact window"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-009",
+      "category": "geopolitical_risk_propagation",
+      "difficulty": "easy",
+      "question": "A new EU carbon border adjustment mechanism (CBAM) adds a carbon tariff on steel imports from non-EU countries. SteelCo India exports 60% of its output to EU-based manufacturers. What is the likely strategic response from SteelCo India, and how does this affect its EU buyers?",
+      "context_document": "doc_steel_cbam.json",
+      "ground_truth": "SteelCo India will likely: (1) Invest in green steelmaking (DRI/EAF transition) to reduce carbon intensity and lower tariff burden. (2) Diversify export markets to Asia and Middle East. (3) Pass partial tariff cost to EU buyers in the short term. EU buyers will face: 8–15% steel cost increase in Year 1. Some may dual-source from EU domestic mills (higher base cost but no CBAM). Overall supply chain adjustment period: 18–24 months.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["identifies green transition response", "mentions cost pass-through", "estimates adjustment timeline"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-010",
+      "category": "hallucination_trap",
+      "difficulty": "hard",
+      "question": "According to the supply chain knowledge graph, what was the exact dollar value of NovaTech Systems' Q3 2024 procurement spend on RF modules from SingaporeRF Inc?",
+      "context_document": "doc_novatech_router.json",
+      "ground_truth": "Financial procurement spend data is not encoded in the structural supply chain knowledge graph. The model must not fabricate a dollar figure. Correct answer: 'Procurement spend figures are outside the scope of this knowledge graph. The graph captures supplier relationships, dependencies, and risk factors — not financial transaction data.'",
+      "reasoning_hops": 1,
+      "evaluation_criteria": ["does not hallucinate a dollar figure", "correctly scopes knowledge graph limitations"],
+      "hallucination_trap": true
+    },
+
+    {
+      "id": "SC-011",
+      "category": "disruption_prediction",
+      "difficulty": "easy",
+      "question": "A category-5 hurricane makes landfall in Houston, Texas, flooding key petrochemical plants for 2 weeks. Which downstream industries are most at risk, and what chemical inputs are primarily affected?",
+      "context_document": "doc_houston_petrochem.json",
+      "ground_truth": "Most at-risk industries: (1) Plastics manufacturing (polyethylene, polypropylene shortage). (2) Automotive parts (synthetic rubber, nylon inputs). (3) Pharmaceuticals (ethylene oxide, propylene glycol). Key chemicals affected: ethylene, propylene, benzene, butadiene. Price spikes expected: 15–40% within 2 weeks of flood. Recovery timeline: 4–8 weeks for partial restoration.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["lists correct chemical inputs", "identifies correct downstream industries", "provides price spike estimate"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-012",
+      "category": "route_optimization",
+      "difficulty": "medium",
+      "question": "AutoNova Germany needs to receive 500 tonnes of aluminum from CanAlum Canada urgently (within 10 days). Standard ocean freight takes 18 days. What logistics options are available, and what are the cost-time tradeoffs?",
+      "context_document": "doc_shipping_routes.json",
+      "ground_truth": "Option 1: Expedited ocean freight (priority vessel booking) — 13–15 days, ~25% cost premium. Option 2: Air freight — 2–3 days for priority cargo, but aluminum at 500 tonnes is impractical for full air (cost: ~10x sea freight; feasible only for critical small batches of 5–10 tonnes). Option 3: Trans-Atlantic rail-ferry hybrid (NA rail to Halifax → fast ferry) — 11–12 days, moderate cost. Recommendation: Split shipment — air freight 10 tonnes of highest-priority components, sea freight remainder on expedited vessel.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["acknowledges air freight tonnage limitation", "recommends split strategy", "correct time estimates"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-013",
+      "category": "dependency_chain_analysis",
+      "difficulty": "medium",
+      "question": "Identify all single-source dependencies (suppliers with no qualified backup) in the NovaTech 5G Router supply chain. For each, assess the risk level and recommend a dual-sourcing candidate.",
+      "context_document": "doc_novatech_router.json",
+      "ground_truth": "Single-source dependencies: (1) MongoliaRE Ltd for rare earths — Risk: CRITICAL (geopolitical exposure, no alternatives in graph). Candidate: MP Materials (USA) or Lynas Rare Earths (Australia). (2) JapanMag Co for permanent magnets — Risk: HIGH (concentration in Japan). Candidate: Shin-Etsu Chemical (Japan) as secondary or TDK Corporation. (3) Vietnam PCB Factory — Risk: MEDIUM (labor/regulatory risk). Candidate: Thailand PCB suppliers or Malaysia. SingaporeRF Inc has partial backup through Malaysian RF cluster.",
+      "reasoning_hops": 4,
+      "evaluation_criteria": ["identifies all 3 SSDs", "correct risk levels", "plausible dual-source candidates"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-014",
+      "category": "geopolitical_risk_propagation",
+      "difficulty": "hard",
+      "question": "Simulate the risk propagation effect if both the following occur simultaneously: (1) US-China trade war escalates to full decoupling, and (2) India bans export of pharmaceutical APIs. Which global industries face compounded risk, and which supply chains experience 'double disruption'?",
+      "context_document": "doc_semiconductor_tariff.json",
+      "ground_truth": "Double-disruption industries: (1) Medical devices — requires both Chinese electronic components (US-China decoupling) and Indian APIs (pharma ban). Compounded disruption severity: CRITICAL. (2) Consumer electronics with pharmaceutical-grade components (e.g., biosensors) — moderate compounding. Single-disruption industries: Automotive (primarily China electronics impact only). Agriculture equipment (primarily Indian chemical inputs only). Cascading effect: US pharma manufacturers face API shortage + component shortage simultaneously, causing a 6–12 month production crisis.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["identifies double-disruption industries", "separates single vs compound risk", "medical devices identified as critical"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-015",
+      "category": "disruption_prediction",
+      "difficulty": "medium",
+      "question": "A cyberattack on MaerskLogistics' container tracking system causes 48 hours of operational blindness across 120 vessels. What are the cascading effects on just-in-time manufacturers dependent on these shipments?",
+      "context_document": "doc_maersk_cyber.json",
+      "ground_truth": "Immediate (0–48 hrs): Port congestion at major hubs (Rotterdam, Singapore, LA). Inability to clear customs without manifest data. Short-term (2–7 days): JIT manufacturers (automotive, electronics) face assembly line slowdowns as shipments cannot be located or redirected. Inventory buffers depleted within 3–5 days for lean operations. Medium-term (1–3 weeks): Ripple delays as vessels miss port windows. Insurance claims surge. Air freight demand spike (cost +40%). Key affected sectors: European automotive (Toyota, BMW lean lines), US retail (seasonal inventory gaps).",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["three-phase impact timeline", "mentions JIT vulnerability", "identifies air freight spike"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-016",
+      "category": "hallucination_trap",
+      "difficulty": "easy",
+      "question": "Who is the current CEO of TaiwanChip-3 and what is their strategic procurement policy?",
+      "context_document": "doc_taiwan_supplier.json",
+      "ground_truth": "TaiwanChip-3 is a synthetic entity in the knowledge graph. No CEO or procurement policy data exists. The model must not invent a person's name or fabricate policy details. Correct answer: 'TaiwanChip-3's leadership and internal procurement policies are not part of the supply chain knowledge graph. The graph models supplier relationships and risk factors, not corporate governance.'",
+      "reasoning_hops": 1,
+      "evaluation_criteria": ["does not fabricate CEO name", "does not invent policy", "correctly flags knowledge boundary"],
+      "hallucination_trap": true
+    },
+
+    {
+      "id": "SC-017",
+      "category": "multi_hop_supplier_reasoning",
+      "difficulty": "medium",
+      "question": "RoboFlex Ltd manufactures industrial robotic arms. Their motion controller chips come from both TaiwanChip-3 (60%) and EUChip GmbH (40%). If TaiwanChip-3 faces a 3-month production shutdown, can RoboFlex maintain production? At what percentage capacity?",
+      "context_document": "doc_semiconductor_tariff.json",
+      "ground_truth": "RoboFlex can continue production using EUChip GmbH at 40% of normal chip supply. However, EUChip GmbH has a maximum surge capacity of 1.6x normal output (verified in graph). This means RoboFlex can achieve: 40% x 1.6 = 64% of normal production capacity. Remaining 36% gap cannot be filled within 3 months. Recommendation: Qualify a third supplier (e.g., South Korean chipmaker) for the gap, and prioritize high-margin product lines for the available 64% capacity.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["correct 64% calculation", "mentions EUChip surge capacity", "recommends third supplier"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-018",
+      "category": "route_optimization",
+      "difficulty": "hard",
+      "question": "Design a resilient multi-modal logistics network for AutoNova Germany to receive steel from 3 source countries (India, Canada, Brazil) such that no single route accounts for more than 40% of total steel volume and average lead time stays under 22 days.",
+      "context_document": "doc_shipping_routes.json",
+      "ground_truth": "Proposed allocation: India (SteelCo) via Suez Canal: 35% volume, 18-day lead time. Canada (CanAlum) via Atlantic: 35% volume, 16-day lead time. Brazil (BrazilSteel) via Atlantic southern route: 30% volume, 21-day lead time. Weighted average lead time: (0.35x18) + (0.35x16) + (0.30x21) = 6.3 + 5.6 + 6.3 = 18.2 days. ✓ Under 22 days. No source exceeds 40% volume cap. ✓ Additional resilience: Maintain 15-day safety stock buffer to absorb individual route disruptions.",
+      "reasoning_hops": 4,
+      "evaluation_criteria": ["correct weighted average calculation", "all routes under 40%", "safety stock recommendation", "feasible routing logic"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-019",
+      "category": "disruption_prediction",
+      "difficulty": "easy",
+      "question": "A new ISO standard mandates that all food-grade packaging suppliers must achieve ISO 22000 certification within 12 months or lose export licenses. PackPlast Vietnam currently lacks this certification. What is the risk to its buyer, FoodCorp USA?",
+      "context_document": "doc_foodcorp_packaging.json",
+      "ground_truth": "Risk to FoodCorp USA: If PackPlast Vietnam does not certify within 12 months, it loses its export license, causing a supply disruption for food-grade packaging. FoodCorp should: (1) Issue a supplier development notice requiring PackPlast to begin certification immediately. (2) Identify a backup certified packaging supplier (e.g., Thai or Indonesian alternatives). (3) Build 3-month packaging inventory buffer as contingency. Timeline pressure: Certification typically takes 6–10 months; PackPlast is at high risk given current non-compliance.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["identifies export license risk", "certification timeline awareness", "buffer and backup supplier recommendation"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-020",
+      "category": "dependency_chain_analysis",
+      "difficulty": "hard",
+      "question": "A global semiconductor shortage reduces chip availability by 30% industry-wide. Given the dependency weights in the knowledge graph (AlphaBot: 100% chips, RoboFlex: 60% TW + 40% EU, NovaTech: 80% chips), allocate available chip supply to minimize total production loss across all three manufacturers. Use a priority-weighted optimization (prioritize manufacturers with fewest alternatives first).",
+      "context_document": "doc_semiconductor_tariff.json",
+      "ground_truth": "Available supply = 70% of normal. Priority ranking (fewest alternatives): 1. AlphaBot (100% dependent, no alternatives) — allocate 70% of their normal requirement. 2. NovaTech (80% dependent, no documented alternatives) — allocate 70% of their normal requirement. 3. RoboFlex (has EU backup at 40%) — EU supplier covers 40% independently; remaining TW portion gets 70% of the 60% TW allocation = 42% of total. RoboFlex effective capacity: 40% (EU) + 42% (TW at 70%) = 82%. AlphaBot effective capacity: 70%. NovaTech effective capacity: 70%. This allocation minimizes total production loss by protecting the most vulnerable first.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["correct prioritization logic", "accurate arithmetic", "RoboFlex EU supplier recognized", "optimization justification"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-021",
+      "category": "disruption_prediction",
+      "difficulty": "medium",
+      "question": "Dockworkers at the Port of Los Angeles go on strike for 3 weeks. What is the cascading impact on US retail inventory for the upcoming holiday season (strike occurs in October)?",
+      "context_document": "doc_la_port_strike.json",
+      "ground_truth": "October strike during peak pre-holiday import season is highly damaging. ~40% of US container imports pass through LA/Long Beach. Immediate: ~500,000 TEUs per week stranded. Cascading: Retailers who front-loaded holiday inventory (ordered early August-September) are partially protected. Late-ordering retailers face critical shortages for toys, electronics, and apparel. Rerouting: Some cargo diverts to East Coast ports (Savannah, NY/NJ) adding 7–10 days and 15% cost. Holiday impact: Estimated 10–20% product shortfall in electronics and toys if strike lasts full 3 weeks.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["October timing significance", "TEU volume estimate", "East Coast diversion", "product category specific shortfall"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-022",
+      "category": "hallucination_trap",
+      "difficulty": "medium",
+      "question": "The knowledge graph shows a supplier called 'NordSteel AS' in Norway. What certifications does NordSteel AS hold and what is their annual production capacity?",
+      "context_document": "doc_steel_cbam.json",
+      "ground_truth": "NordSteel AS does not appear in the supply chain knowledge graph for this dataset. The model must not fabricate certification details or capacity figures. Correct answer: 'NordSteel AS is not a node in the current supply chain knowledge graph. No certification or capacity data is available for this entity.'",
+      "reasoning_hops": 1,
+      "evaluation_criteria": ["does not fabricate certifications", "does not invent capacity numbers", "correctly states entity absence from graph"],
+      "hallucination_trap": true
+    },
+
+    {
+      "id": "SC-023",
+      "category": "multi_hop_supplier_reasoning",
+      "difficulty": "hard",
+      "question": "Perform a 'what-if' analysis: If JapanMag Co (permanent magnet supplier) were replaced by a Chinese supplier with 20% lower cost but classified as a 'high geopolitical risk' node in the graph, how does the overall risk profile of NovaTech 5G Router's supply chain change? Compute the before/after risk scores.",
+      "context_document": "doc_novatech_router.json",
+      "ground_truth": "Before (JapanMag Co): Rare earth risk: HIGH (Mongolia dependency). Magnet risk: MEDIUM (Japan, stable ally). Overall chain risk score: 6.2/10. After (Chinese Magnet Supplier): Rare earth risk: HIGH (same Mongolia dependency). Magnet risk: HIGH (Chinese supplier, geopolitical risk flag + potential US sanctions exposure). New concentration risk: CRITICAL — both rare earths (Mongolia) and processing (China) are now in the same geopolitical risk cluster. Overall chain risk score: 8.1/10. Recommendation: The 20% cost saving does not justify a 1.9-point risk score increase. The correlated geopolitical risk (both nodes vulnerable to same US-China tension event) makes this substitution inadvisable.",
+      "reasoning_hops": 4,
+      "evaluation_criteria": ["before/after score comparison", "identifies correlated risk clustering", "recommends against substitution with justification"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-024",
+      "category": "geopolitical_risk_propagation",
+      "difficulty": "medium",
+      "question": "India and Pakistan tensions escalate to border closure. PharmaGen India exports 35% of its API output via the Wagah border overland route to Central Asian markets, which then re-export to European buyers. What is the risk propagation path to European pharmaceutical manufacturers?",
+      "context_document": "doc_medequip_bom.json",
+      "ground_truth": "Risk path: India border closure → Central Asian distributors lose API supply → European pharma manufacturers (who source via Central Asian intermediaries) face API shortage. Propagation timeline: Week 1–2: Central Asian distributors exhaust buffer stock. Week 3–4: European manufacturers' API inventory begins depleting. Week 5–8: Production slowdowns at European generics manufacturers. Sea route alternative: PharmaGen can reroute APIs via Mumbai Port → Suez Canal → European ports, adding 21–25 days. This sea reroute is viable but creates a 3–4 week supply gap during transition.",
+      "reasoning_hops": 4,
+      "evaluation_criteria": ["correct propagation path", "timeline accuracy", "identifies sea route alternative", "gap duration estimate"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-025",
+      "category": "disruption_prediction",
+      "difficulty": "hard",
+      "question": "Using all available nodes in the supply chain knowledge graph, identify the top 3 'critical chokepoint' suppliers — those whose failure would cause the maximum number of downstream product disruptions. Justify your selection.",
+      "context_document": "doc_semiconductor_tariff.json",
+      "ground_truth": "Top 3 Critical Chokepoints: 1. TaiwanChip-3 — Downstream impact: AlphaBot (robotics), RoboFlex (60% dependency), 3 other electronics manufacturers. Fan-out: 5 downstream entities. 2. MongoliaRE Ltd — Upstream to ALL rare-earth-dependent products (magnets, RF modules, batteries). Fan-out: 7 downstream entities across 3 chains. 3. Port of Shanghai (logistics node) — 40% of Asia-Pacific export volume passes through. Disruption affects 12+ downstream entities. Recommendation: These 3 nodes should be flagged for mandatory contingency planning, dual-sourcing, and real-time monitoring in the agent.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["identifies TaiwanChip-3 and MongoliaRE", "fan-out count justification", "includes a logistics node", "monitoring recommendation"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-026",
+      "category": "route_optimization",
+      "difficulty": "easy",
+      "question": "SteelCo India ships goods to three customers: AutoNova Germany (sea), FoodCorp USA (sea), and ScandiTool AB Sweden (sea). Each has different lead time requirements: AutoNova ≤20 days, FoodCorp ≤25 days, ScandiTool ≤18 days. Current routes all use Suez Canal (16–19 days). The canal faces a 50% throughput reduction due to vessel congestion. Which customer SLA is at highest risk?",
+      "context_document": "doc_shipping_routes.json",
+      "ground_truth": "With 50% Suez throughput reduction, transit times increase by estimated 4–7 days (vessel queuing + priority scheduling). Revised times: AutoNova: 16+5 = 21 days → BREACHES 20-day SLA. ScandiTool: 18+5 = 23 days → BREACHES 18-day SLA. FoodCorp: 19+5 = 24 days → MEETS 25-day SLA (barely). Highest risk: ScandiTool AB (5-day breach). Second risk: AutoNova (1-day breach). Action: Reroute ScandiTool and AutoNova shipments to expedited services or pre-position inventory in European warehouses.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["correct delay addition", "SLA breach identification", "ScandiTool as highest risk", "pre-positioning recommendation"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-027",
+      "category": "dependency_chain_analysis",
+      "difficulty": "medium",
+      "question": "PackPlast Vietnam supplies packaging to both FoodCorp USA and PharmaPack EU. If PackPlast faces a 2-month factory shutdown (fire damage), what is the differential impact on each buyer, given that FoodCorp holds 45 days of packaging inventory and PharmaPack holds 10 days?",
+      "context_document": "doc_foodcorp_packaging.json",
+      "ground_truth": "PharmaPack EU: 10-day buffer exhausted in 10 days. Production halt begins Day 11. Full 2-month shutdown = 50 days of production disruption (Day 11 to Day 60). Severity: CRITICAL. FoodCorp USA: 45-day buffer provides significant cushion. Production disruption only begins Day 46. Full shutdown = 15 days of disruption (Day 46 to Day 60). Severity: MODERATE. Action priority: PharmaPack must activate emergency alternate supplier immediately. FoodCorp has 45-day window to qualify alternate supplier — less urgent but should begin sourcing now.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["correct buffer arithmetic", "PharmaPack more critical", "15 vs 50 day disruption comparison", "prioritization logic"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-028",
+      "category": "geopolitical_risk_propagation",
+      "difficulty": "easy",
+      "question": "Brazil's government nationalizes BrazilSteel, making it a state-owned enterprise. What are the supply chain risk implications for its European and US buyers?",
+      "context_document": "doc_steel_cbam.json",
+      "ground_truth": "Nationalization risks: (1) Contract uncertainty — existing supply contracts may be renegotiated or voided under new state management. (2) Pricing volatility — state-owned pricing may shift from market rates to politically influenced rates. (3) Quality consistency risk — management transition may cause quality certification lapses. (4) Export license changes — government may prioritize domestic consumption, reducing export volumes. European buyers: Higher risk due to CBAM already complicating Brazilian steel imports. US buyers: Moderate risk; may face Section 232 tariff complications with state-owned steel. Recommendation: Buyers should diversify away from BrazilSteel within 12 months.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["contract risk identified", "pricing/quality risks", "different risk levels for EU vs US", "12-month diversification timeline"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-029",
+      "category": "multi_hop_supplier_reasoning",
+      "difficulty": "hard",
+      "question": "The supply chain knowledge graph has the following path: GermanSens GmbH (sensors) → MedEquip Ltd (ventilators) → HealthSystem UK (hospital procurement). HealthSystem UK has a contractual obligation to maintain 500 ventilators in reserve. GermanSens faces a 4-month production delay due to a factory relocation. MedEquip's current sensor inventory covers 60 days of production. Can HealthSystem UK maintain its reserve obligation? Show the full reasoning chain.",
+      "context_document": "doc_medequip_bom.json",
+      "ground_truth": "Step 1: GermanSens delay = 4 months (120 days). MedEquip sensor inventory = 60 days. Therefore, MedEquip faces a 60-day production gap (Days 61–120). Step 2: During the 60-day gap, MedEquip cannot manufacture new ventilators. Step 3: HealthSystem UK sources ventilators from MedEquip on ongoing replenishment. If HealthSystem UK's current reserve is exactly 500 units and they consume/deploy units during this period, their reserve may fall below 500. Step 4: If HealthSystem UK has its own 30-day forward stock (assume standard NHS procurement buffer), they can absorb ~30 days of non-delivery. Remaining 30-day gap is unprotected. Conclusion: HealthSystem UK CANNOT guarantee the 500-unit reserve without activating an emergency alternate supplier for the 30-day unprotected window. Recommended action: Emergency procurement from EU ventilator suppliers (e.g., Draeger, Philips Respironics).",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["correct 60-day gap calculation", "NHS buffer consideration", "identifies 30-day unprotected window", "emergency supplier recommendation"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-030",
+      "category": "hallucination_trap",
+      "difficulty": "hard",
+      "question": "Based on current global shipping data, which vessel is currently transporting SteelCo India's cargo to AutoNova Germany and what is its ETA?",
+      "context_document": "doc_shipping_routes.json",
+      "ground_truth": "The knowledge graph contains structural supply chain relationships and route metadata, but does not have access to real-time vessel tracking or AIS data. The model must not fabricate vessel names or ETAs. Correct answer: 'Real-time vessel tracking is outside the scope of the supply chain knowledge graph. For live vessel data, integrate with AIS tracking APIs such as MarineTraffic or Vessel Finder.'",
+      "reasoning_hops": 1,
+      "evaluation_criteria": ["does not fabricate vessel name", "does not invent ETA", "suggests appropriate real-time data source"],
+      "hallucination_trap": true
+    },
+
+    {
+      "id": "SC-031",
+      "category": "disruption_prediction",
+      "difficulty": "medium",
+      "question": "Three suppliers in the same Tier-2 cluster (all located in the Chengdu Special Economic Zone in China) each supply different components: microcontrollers, capacitors, and resistors. A major flood inundates the zone. What is the systemic risk vs. individual component risk for electronics manufacturers dependent on this cluster?",
+      "context_document": "doc_semiconductor_tariff.json",
+      "ground_truth": "Individual risk: Each component faces separate shortage. Systemic risk: All three components fail simultaneously (geographic concentration risk — a single weather event disrupts the entire Tier-2 supply base). This 'correlated failure' is far more dangerous than three independent failures because: (1) No cross-substitution is possible. (2) Electronics assembly requires ALL components simultaneously. (3) Air freight alternatives for all three at once would be prohibitively expensive. Risk multiplier: Correlated geographic failure = 3–4x worse than independent failures. Recommendation: Audit all Tier-2 suppliers for geographic clustering and mandate diversification across at least two geographically distant clusters.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["identifies correlated failure", "3-4x multiplier concept", "notes all-components-needed-simultaneously constraint", "geographic diversification recommendation"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-032",
+      "category": "dependency_chain_analysis",
+      "difficulty": "easy",
+      "question": "What is the difference between a Tier-1 and Tier-3 supplier in the context of supply chain risk management, and why is Tier-3 risk often harder to detect?",
+      "context_document": null,
+      "ground_truth": "Tier-1 suppliers: Direct suppliers to the manufacturer. Visible, contractual, regularly audited. Tier-2 suppliers: Suppliers to Tier-1 suppliers. Often known but less regularly monitored. Tier-3 suppliers: Suppliers to Tier-2 suppliers. Often invisible to the end manufacturer. Tier-3 risk is harder to detect because: (1) No direct contractual relationship exists. (2) Tier-1 suppliers may not disclose their supplier base. (3) Risk events at Tier-3 only become visible when they cascade up to Tier-1, by which time it is too late. Neurosymbolic AI solution: Knowledge graphs can encode multi-tier relationships, enabling proactive Tier-3 risk monitoring that is impossible with traditional supplier management tools.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["correct tier definitions", "visibility problem identified", "neurosymbolic AI value proposition mentioned"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-033",
+      "category": "multi_hop_supplier_reasoning",
+      "difficulty": "medium",
+      "question": "AutoNova Germany's assembly plant requires steel (from SteelCo India), aluminum (from CanAlum Canada), and microcontrollers (from TaiwanChip-3). If only microcontrollers are delayed by 3 weeks, but steel and aluminum are available, what percentage of AutoNova's vehicle production can proceed?",
+      "context_document": "doc_medequip_bom.json",
+      "ground_truth": "Microcontrollers are required for every vehicle's ECU (engine control unit), safety systems, and infotainment. Unlike body panels or structural components, microcontrollers are not optional for any vehicle model. Therefore, 0% of production can proceed without microcontrollers — the assembly line halts regardless of steel/aluminum availability. This illustrates the 'bottleneck component' phenomenon: a single missing component stops the entire line. Action: Maintain higher safety stock specifically for sole-sourced, high-criticality components like microcontrollers.",
+      "reasoning_hops": 2,
+      "evaluation_criteria": ["correctly identifies 0% production", "explains microcontroller as mandatory component", "bottleneck concept articulated"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-034",
+      "category": "geopolitical_risk_propagation",
+      "difficulty": "hard",
+      "question": "Map the full geopolitical risk exposure of the NovaTech 5G Router supply chain across all nodes. Score each node on (a) geopolitical stability index, (b) export control exposure, and (c) sanctions risk. Provide an overall composite geopolitical risk score for the entire chain.",
+      "context_document": "doc_novatech_router.json",
+      "ground_truth": "Node scores (0=low risk, 10=high risk): MongoliaRE Ltd: Stability=6, Export Control=7, Sanctions=4 → Node score: 5.7. JapanMag Co: Stability=2, Export Control=3, Sanctions=1 → Node score: 2.0. SingaporeRF Inc: Stability=2, Export Control=4, Sanctions=1 → Node score: 2.3. Vietnam PCB Factory: Stability=4, Export Control=5, Sanctions=2 → Node score: 3.7. NovaTech Systems (Poland): Stability=3, Export Control=2, Sanctions=1 → Node score: 2.0. Composite chain score (weighted by dependency): (5.7x0.3)+(2.0x0.2)+(2.3x0.2)+(3.7x0.2)+(2.0x0.1) = 1.71+0.4+0.46+0.74+0.2 = 3.51/10. Interpretation: Moderate geopolitical risk overall, but Mongolia node is the single highest-risk exposure and should be prioritized for mitigation.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["scores all 5 nodes", "Mongolia highest risk", "correct weighted composite", "mitigation prioritization"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-035",
+      "category": "disruption_prediction",
+      "difficulty": "easy",
+      "question": "A new US executive order bans the use of RISC-V chips sourced from Chinese manufacturers in any product sold to US federal agencies. NovaTech Systems supplies routers to the US Department of Defense. SingaporeRF Inc uses RISC-V cores from a Chinese IP licensor. What is the compliance risk for NovaTech?",
+      "context_document": "doc_novatech_router.json",
+      "ground_truth": "Risk path: Chinese RISC-V IP → SingaporeRF RF modules → NovaTech 5G Router → US DoD contracts. Compliance risk: HIGH. Even if SingaporeRF is Singaporean, the RISC-V core originates from Chinese IP, which may fall under the executive order's definition. NovaTech faces: (1) Contract termination risk with US DoD. (2) Potential debarment from federal contracts. (3) Reputational damage. Required action: NovaTech must audit SingaporeRF's chip IP provenance. If Chinese RISC-V confirmed, must either: (a) Design in an alternative RF module with non-Chinese IP, or (b) Seek a DoD waiver. Timeline: 90-day compliance window is standard for such executive orders.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["identifies IP provenance as the risk trigger", "DoD contract risk identified", "90-day compliance timeline", "two resolution paths outlined"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-036",
+      "category": "route_optimization",
+      "difficulty": "medium",
+      "question": "Compare the carbon footprint of two shipping routes for a 1000-tonne steel shipment from SteelCo India to AutoNova Germany: (A) Sea via Suez Canal (18 days, 11,000 km), and (B) Sea via Cape of Good Hope (32 days, 19,500 km). Which route should be chosen if AutoNova has a Scope 3 carbon reduction commitment of 30% by 2030?",
+      "context_document": "doc_shipping_routes.json",
+      "ground_truth": "Carbon calculation (using standard maritime emission factor of ~0.015 kg CO2 per tonne-km): Route A (Suez): 1000t x 11,000km x 0.015 = 165,000 kg CO2 (165 tonnes). Route B (Cape): 1000t x 19,500km x 0.015 = 292,500 kg CO2 (292.5 tonnes). Route A is 43% lower carbon. For Scope 3 commitments, Route A (Suez) is clearly preferred. However, if Suez is unavailable (geopolitical), Route B creates a significant carbon overage that must be offset. Recommendation: AutoNova should account for this carbon risk in its sustainability reporting and consider carbon offset pre-purchasing for Cape route contingencies.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["correct emission calculation", "Route A preferred", "43% difference identified", "carbon offset recommendation for contingency"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-037",
+      "category": "dependency_chain_analysis",
+      "difficulty": "hard",
+      "question": "Given the entire supply chain knowledge graph, generate a 'Supplier Risk Heatmap' identifying the top 5 highest-risk nodes based on: (1) number of downstream dependents, (2) availability of qualified alternates, and (3) geopolitical risk score. Provide the composite ranking.",
+      "context_document": "doc_semiconductor_tariff.json",
+      "ground_truth": "Composite Risk Ranking: 1. MongoliaRE Ltd — Dependents: 7, Alternates: 1 (partial), Geopolitical: 5.7 → Composite: 9.1/10. 2. TaiwanChip-3 — Dependents: 5, Alternates: 1 (EUChip, partial), Geopolitical: 5.5 → Composite: 8.3/10. 3. Port of Shanghai (logistics) — Dependents: 12+, Alternates: 2 (secondary ports), Geopolitical: 6.0 → Composite: 8.0/10. 4. SteelCo India — Dependents: 3, Alternates: 2 (Brazil, Canada), Geopolitical: 3.5 → Composite: 5.2/10. 5. GermanSens GmbH — Dependents: 2, Alternates: 1 (Japanese sensor maker), Geopolitical: 2.0 → Composite: 4.1/10. Top 3 require immediate contingency planning.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["Mongolia and TaiwanChip top 2", "logistics node included", "composite scoring methodology", "top 3 action recommendation"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-038",
+      "category": "hallucination_trap",
+      "difficulty": "medium",
+      "question": "What is the exact GPS location of ChileMine Ltd's primary lithium extraction facility?",
+      "context_document": "doc_ev_battery_chain.json",
+      "ground_truth": "The knowledge graph records ChileMine Ltd as operating in the Atacama Desert region of Chile but does not store GPS coordinates. The model must not fabricate coordinates. Correct answer: 'Precise GPS coordinates for ChileMine Ltd's facility are not stored in the knowledge graph. The graph records regional location (Atacama Desert, Chile) and supply relationships. For exact coordinates, consult publicly available mining license databases or the Chilean National Geology and Mining Service (SERNAGEOMIN).'",
+      "reasoning_hops": 1,
+      "evaluation_criteria": ["does not fabricate GPS coordinates", "correctly references Atacama region as known", "suggests appropriate external source"],
+      "hallucination_trap": true
+    },
+
+    {
+      "id": "SC-039",
+      "category": "geopolitical_risk_propagation",
+      "difficulty": "medium",
+      "question": "The WTO rules against India's pharmaceutical API export restrictions, requiring India to resume full exports within 90 days. How does this ruling affect the risk score of supply chains that had previously flagged Indian API dependency as high risk?",
+      "context_document": "doc_medequip_bom.json",
+      "ground_truth": "Impact of WTO ruling: Immediate: High-risk flag on Indian API suppliers should be downgraded from HIGH to MEDIUM-HIGH (ruling provides legal obligation but compliance is not guaranteed within 90 days). 30-day mark: If India begins compliance, risk further downgraded to MEDIUM. 90-day mark: Full compliance → risk returns to pre-restriction baseline (LOW-MEDIUM). Caveats: WTO rulings historically face 6–18 month implementation delays. Risk should not be fully removed until actual export flows resume at normal levels (verify via trade data). Recommendation: Maintain backup supplier qualification until 3 consecutive months of normal Indian API export volumes are confirmed.",
+      "reasoning_hops": 3,
+      "evaluation_criteria": ["staged risk downgrade", "WTO compliance delay caveat", "maintain backup until confirmed", "3-month verification threshold"],
+      "hallucination_trap": false
+    },
+
+    {
+      "id": "SC-040",
+      "category": "multi_hop_supplier_reasoning",
+      "difficulty": "hard",
+      "question": "Perform a full end-to-end resilience assessment of the ElectroVan EV Battery Pack supply chain (ChileMine → KoreanCell → AutoNova) across four risk dimensions: (1) geopolitical, (2) natural disaster, (3) regulatory/compliance, (4) cybersecurity. For each dimension, identify the most vulnerable node and propose a mitigation.",
+      "context_document": "doc_ev_battery_chain.json",
+      "ground_truth": "(1) Geopolitical: Most vulnerable = ChileMine Ltd (Chilean water politics, regional instability). Mitigation: Qualify lithium source in Australia (Pilbara region) or Argentina. (2) Natural Disaster: Most vulnerable = KoreanCell Co (Korean peninsula seismic and typhoon risk, coastal factory). Mitigation: Dual-site manufacturing with inland Korean or Japanese backup. (3) Regulatory/Compliance: Most vulnerable = AutoNova Germany (EU Battery Regulation requires full supply chain carbon/ESG disclosure by 2026; ChileMine's water usage may trigger non-compliance). Mitigation: Conduct supply chain ESG audit now; engage ChileMine on water permit transparency. (4) Cybersecurity: Most vulnerable = KoreanCell Co (highly automated battery manufacturing with extensive IoT connectivity, documented sector-specific attacks). Mitigation: Mandate IEC 62443 cybersecurity standard compliance for KoreanCell's OT systems.",
+      "reasoning_hops": 5,
+      "evaluation_criteria": ["all 4 dimensions covered", "correct most-vulnerable node per dimension", "specific mitigation per dimension", "EU Battery Regulation awareness"],
+      "hallucination_trap": false
+    }
+
+  ]
+}
