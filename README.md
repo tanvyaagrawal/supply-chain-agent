@@ -21,9 +21,9 @@ To increase training diversity, each generated fact is rewritten using multiple 
 - risk analysis statement form
 - knowledge graph fact form
 - domain statement form
-This produces an expanded domain corpus without changing the underlying information content. :contentReference[oaicite:2]{index=2}
+This produces an expanded domain corpus without changing the underlying information content.
 #### Training Strategy
-The model is loaded in **4-bit quantized form** and prepared for efficient k-bit training. Instead of full fine-tuning, the project uses **LoRA-based continued pretraining**, which updates only selected transformer modules while keeping the approach lightweight and hardware-efficient. :contentReference[oaicite:3]{index=3}
+The model is loaded in **4-bit quantized form** and prepared for efficient k-bit training. Instead of full fine-tuning, the project uses **LoRA-based continued pretraining**, which updates only selected transformer modules while keeping the approach lightweight and hardware-efficient.
 #### Training Setup
 Key training choices include:
 - 4-bit NF4 quantization
