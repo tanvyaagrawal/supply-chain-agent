@@ -13,7 +13,7 @@ The CPT corpus is created from the **supply chain knowledge graph** by convertin
 - node attributes into natural-language factual statements
 - edge relations into relational statements
 - multi-hop supply dependencies into propagation statements
-This transforms structured graph knowledge into plain text suitable for language model pretraining. The code builds records from node facts, edge facts, and disruption propagation paths, then writes them into JSONL files for training. :contentReference[oaicite:1]{index=1}
+This transforms structured graph knowledge into plain text suitable for language model pretraining. The code builds records from node facts, edge facts, and disruption propagation paths, then writes them into JSONL files for training.
 #### Data Expansion
 To increase training diversity, each generated fact is rewritten using multiple lightweight templates such as:
 - direct factual form
