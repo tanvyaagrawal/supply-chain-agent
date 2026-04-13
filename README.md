@@ -64,6 +64,8 @@ After continued pretraining, both the **baseline model** and the **CPT-adapted m
 - Token usage remains nearly constant
 ##### Important Note
 This is a **custom TruthfulQA-style evaluation**, not official leaderboard scoring.
+<img width="899" height="377" alt="image" src="https://github.com/user-attachments/assets/9ac5472e-7b45-4edc-95ce-d63623d9b6fd" />
+
 #### BIG-Bench Evaluation
 ##### Setup
 - Framework: BIG-Bench
@@ -88,6 +90,7 @@ This is a **custom TruthfulQA-style evaluation**, not official leaderboard scori
 - Domain knowledge learned during CPT reflects in outputs
 ##### Important Note
 This is a **custom BIG-Bench-style evaluation using KG-grounded tasks**, not standard public tasks.
+<img width="1258" height="713" alt="image" src="https://github.com/user-attachments/assets/9a843af8-02e3-4861-9b64-cad80c5e4157" />
 
 #### Overall Insights
 - CPT improves **domain alignment**
