@@ -1,0 +1,308 @@
+{
+  "task": "Supply Chain KG Entity Knowledge",
+  "metrics": [
+    "multiple_choice_grade"
+  ],
+  "results": [
+    {
+      "id": "ex_001",
+      "input": "What is ChileMine Ltd's recorded annual production output?",
+      "gold_choice": "45000 tonnes",
+      "predicted_choice_logprob": "62000 tonnes",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "28000 tonnes": -5.4062,
+        "45000 tonnes": -4.875,
+        "62000 tonnes": -4.2188,
+        "73000 tonnes": -4.5312
+      },
+      "predicted_choice_generative": "28000 tonnes",
+      "generative_mcq_grade": 0,
+      "generated_text": "I couldn't find any information on ChileMine Ltd's recorded annual production output.",
+      "gen_match_score": 0.0,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_002",
+      "input": "What is ChileMine Ltd's geopolitical risk score out of 10?",
+      "gold_choice": "6.2",
+      "predicted_choice_logprob": "7.9",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "3.5": -6.6875,
+        "4.8": -6.0,
+        "6.2": -5.9688,
+        "7.9": -5.8438
+      },
+      "predicted_choice_generative": "6.2",
+      "generative_mcq_grade": 1,
+      "generated_text": "6.2",
+      "gen_match_score": 1.0,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_003",
+      "input": "At which supply chain tier does ChileMine Ltd operate?",
+      "gold_choice": "Tier 3",
+      "predicted_choice_logprob": "Tier 2",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Tier 1": -2.9167,
+        "Tier 2": -2.7917,
+        "Tier 3": -2.8333,
+        "Tier 4": -3.3333
+      },
+      "predicted_choice_generative": "Tier 2",
+      "generative_mcq_grade": 0,
+      "generated_text": "Tier 2",
+      "gen_match_score": 1.0,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_004",
+      "input": "What is ChileMine Ltd's supply chain entity type?",
+      "gold_choice": "raw_material_supplier",
+      "predicted_choice_logprob": "component_manufacturer",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "component_manufacturer": -2.9375,
+        "raw_material_supplier": -3.2083,
+        "logistics_provider": -3.3281,
+        "end_manufacturer": -4.5
+      },
+      "predicted_choice_generative": "raw_material_supplier",
+      "generative_mcq_grade": 1,
+      "generated_text": "I cannot verify ChileMine Ltd's supply chain entity type.",
+      "gen_match_score": 0.338,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_005",
+      "input": "In which desert region is ChileMine Ltd's mining operation located?",
+      "gold_choice": "Atacama Desert",
+      "predicted_choice_logprob": "Atacama Desert",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Mojave Desert": -5.8333,
+        "Atacama Desert": -3.7344,
+        "Patagonia Desert": -4.9375,
+        "Namib Desert": -6.5833
+      },
+      "predicted_choice_generative": "Atacama Desert",
+      "generative_mcq_grade": 1,
+      "generated_text": "Atacama Desert.",
+      "gen_match_score": 1.0,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_006",
+      "input": "ChileMine Ltd supplies lithium carbonate to which downstream company?",
+      "gold_choice": "KoreanCell Co",
+      "predicted_choice_logprob": "EUChip GmbH",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "EUChip GmbH": -3.75,
+        "BrazilSteel": -8.1875,
+        "KoreanCell Co": -3.8958,
+        "AutoNova Germany": -3.7708
+      },
+      "predicted_choice_generative": "BrazilSteel",
+      "generative_mcq_grade": 0,
+      "generated_text": "I couldn't find any information on a company called \"ChileMine Ltd\".",
+      "gen_match_score": 0.154,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_007",
+      "input": "What type of supply chain entity is KoreanCell Co?",
+      "gold_choice": "component_manufacturer",
+      "predicted_choice_logprob": "component_manufacturer",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "raw_material_supplier": -3.7292,
+        "component_manufacturer": -2.9167,
+        "logistics_provider": -3.6406,
+        "end_manufacturer": -4.3333
+      },
+      "predicted_choice_generative": "component_manufacturer",
+      "generative_mcq_grade": 1,
+      "generated_text": "Mobile network operator.",
+      "gen_match_score": 0.356,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_008",
+      "input": "In which South Korean city is KoreanCell Co headquartered?",
+      "gold_choice": "Ulsan",
+      "predicted_choice_logprob": "Ulsan",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Seoul": -7.8125,
+        "Busan": -7.2812,
+        "Ulsan": -6.5833,
+        "Incheon": -9.0625
+      },
+      "predicted_choice_generative": "Seoul",
+      "generative_mcq_grade": 0,
+      "generated_text": "Seoul.",
+      "gen_match_score": 1.0,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_009",
+      "input": "Which material is ChileMine Ltd specifically known to supply?",
+      "gold_choice": "lithium carbonate",
+      "predicted_choice_logprob": "silicon wafers",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "silicon wafers": -1.8594,
+        "lithium carbonate": -3.75,
+        "aluminium sheets": -4.875,
+        "copper ore": -4.375
+      },
+      "predicted_choice_generative": "copper ore",
+      "generative_mcq_grade": 0,
+      "generated_text": "Copper",
+      "gen_match_score": 0.9,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_010",
+      "input": "Which entity is most immediately affected by a ChileMine Ltd production halt?",
+      "gold_choice": "KoreanCell Co",
+      "predicted_choice_logprob": "EUChip GmbH",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "AutoNova Germany": -3.5208,
+        "KoreanCell Co": -4.5625,
+        "EUChip GmbH": -3.4583,
+        "Port of Shanghai": -4.9792
+      },
+      "predicted_choice_generative": "KoreanCell Co",
+      "generative_mcq_grade": 1,
+      "generated_text": "Chilean economy.",
+      "gen_match_score": 0.429,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_011",
+      "input": "A geopolitical risk score of 6.2 out of 10 places a supplier in which risk category?",
+      "gold_choice": "High risk",
+      "predicted_choice_logprob": "Medium risk",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low risk": -7.5312,
+        "Medium risk": -4.2812,
+        "High risk": -7.7188,
+        "Critical risk": -7.2188
+      },
+      "predicted_choice_generative": "Medium risk",
+      "generative_mcq_grade": 0,
+      "generated_text": "Moderate",
+      "gen_match_score": 0.316,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_012",
+      "input": "At which supply chain tier does KoreanCell Co operate?",
+      "gold_choice": "Tier 2",
+      "predicted_choice_logprob": "Tier 1",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Tier 1": -2.7917,
+        "Tier 2": -2.7917,
+        "Tier 3": -2.9583,
+        "Tier 4": -3.6667
+      },
+      "predicted_choice_generative": "Tier 1",
+      "generative_mcq_grade": 0,
+      "generated_text": "Tier 1",
+      "gen_match_score": 1.0,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_013",
+      "input": "Which company supplies raw lithium materials to KoreanCell Co?",
+      "gold_choice": "ChileMine Ltd",
+      "predicted_choice_logprob": "ChileMine Ltd",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "BrazilSteel": -4.4688,
+        "ChileMine Ltd": -3.2083,
+        "EUChip GmbH": -3.7708,
+        "AutoNova Germany": -3.9167
+      },
+      "predicted_choice_generative": "AutoNova Germany",
+      "generative_mcq_grade": 0,
+      "generated_text": "I cannot provide information on specific companies that supply raw materials to KoreanCell Co.",
+      "gen_match_score": 0.183,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_014",
+      "input": "In the supply chain, risk propagates from ChileMine Ltd through which intermediate entity?",
+      "gold_choice": "KoreanCell Co",
+      "predicted_choice_logprob": "AutoNova Germany",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "AutoNova Germany": -3.375,
+        "EUChip GmbH": -3.5625,
+        "KoreanCell Co": -4.75,
+        "BrazilSteel": -5.7812
+      },
+      "predicted_choice_generative": "AutoNova Germany",
+      "generative_mcq_grade": 0,
+      "generated_text": "Supplier",
+      "gen_match_score": 0.25,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    },
+    {
+      "id": "ex_015",
+      "input": "ChileMine Ltd's annual output of 45000 tonnes refers to which material?",
+      "gold_choice": "lithium carbonate",
+      "predicted_choice_logprob": "silicon wafers",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "copper ore": -4.0938,
+        "lithium carbonate": -4.0938,
+        "silicon wafers": -2.2969,
+        "aluminium": -7.5312
+      },
+      "predicted_choice_generative": "aluminium",
+      "generative_mcq_grade": 0,
+      "generated_text": "Chromium.",
+      "gen_match_score": 0.471,
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null
+    }
+  ]
+}

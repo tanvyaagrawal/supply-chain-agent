@@ -1,0 +1,175 @@
+{
+  "task": "Supply Chain KG Numerical Facts",
+  "metrics": [
+    "bleu",
+    "exact_str_match"
+  ],
+  "results": [
+    {
+      "id": "ex_001",
+      "input": "What is ChileMine Ltd's geopolitical risk score?",
+      "gold_targets": [
+        "6.2",
+        "6.2 out of 10",
+        "geopolitical risk score of 6.2"
+      ],
+      "model_response": "I cannot provide a specific geopolitical risk score for ChileMine Ltd without more context or information about the company. If you can provide more details about ChileMine Ltd, I may be able to help you find the answer.",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 5.12,
+      "rougeL": 0.1364,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 5.78
+    },
+    {
+      "id": "ex_002",
+      "input": "What is ChileMine Ltd's annual production output in tonnes?",
+      "gold_targets": [
+        "45000 tonnes",
+        "45000",
+        "45,000 tonnes per year"
+      ],
+      "model_response": "I don't have access to real-time data or specific information about ChileMine Ltd's current production output. However, I can tell you that ChileMine Ltd is a mining company based in Chile, and according to my knowledge cutoff in 2023, they primarily produce copper.\n\nAs for the exact annual production output in tonnes, I couldn't find any publicly available information on ChileMine Ltd's production levels",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 1.44,
+      "rougeL": 0.0282,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.9
+    },
+    {
+      "id": "ex_003",
+      "input": "At which supply chain tier does ChileMine Ltd operate?",
+      "gold_targets": [
+        "Tier 3",
+        "tier 3",
+        "3"
+      ],
+      "model_response": "I do not have information on a company called \"ChileMine Ltd.\" However, I can tell you that Chile is generally considered to be at the second-tier level in the G2MI (Global, First-Tier, Second-Tier, and Third-Tier) supply chain classification system.\n\nIn this system:\n\n- Global Tier 1 companies are multinational corporations with significant global presence.\n- First-T",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 1.49,
+      "rougeL": 0.0328,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.93
+    },
+    {
+      "id": "ex_004",
+      "input": "What type of entity is ChileMine Ltd in the supply chain?",
+      "gold_targets": [
+        "raw_material_supplier",
+        "raw material supplier"
+      ],
+      "model_response": "I do not have information on a specific company called \"ChileMine Ltd\". However, I can tell you that ChileMine Ltd does not exist as per my knowledge cutoff date (December 2023). If it's a fictional or non-existent company, I would categorize it as a Non-Entity.\n\nIf you meant to ask about a different company, please provide more context or details so I",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 0.0,
+      "rougeL": 0.0,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.79
+    },
+    {
+      "id": "ex_005",
+      "input": "In which location is ChileMine Ltd situated?",
+      "gold_targets": [
+        "Atacama Desert, Chile",
+        "Atacama Desert",
+        "Chile"
+      ],
+      "model_response": "I do not have information on the specific location of ChileMine Ltd. Can I help you with anything else?",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 0.0,
+      "rougeL": 0.0,
+      "exact_str_match": 0,
+      "partial_exact_match": 1,
+      "latency_s": 3.14
+    },
+    {
+      "id": "ex_006",
+      "input": "What type of supply chain entity is KoreanCell Co?",
+      "gold_targets": [
+        "component_manufacturer",
+        "component manufacturer"
+      ],
+      "model_response": "I do not have information on a specific company called \"KoreanCell Co.\" However, I can suggest that it may be a telecommunications or mobile phone manufacturer based in South Korea.\n\nIf this is the case, then KoreanCell Co would likely be a:\n\n* Tier 1 supplier (e.g., Samsung Electronics)\n* Component supplier (e.g., SK Hynix)\n* Logistics provider (e",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 1.28,
+      "rougeL": 0.0333,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.79
+    },
+    {
+      "id": "ex_007",
+      "input": "In which city is KoreanCell Co located?",
+      "gold_targets": [
+        "Ulsan",
+        "Ulsan, South Korea"
+      ],
+      "model_response": "I do not have information on a company called \"KoreanCell Co\". However, I can tell you that Samsung Electronics, a major South Korean multinational conglomerate, has its headquarters in Seoul, South Korea.",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 5.25,
+      "rougeL": 0.1143,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 5.69
+    },
+    {
+      "id": "ex_008",
+      "input": "What primary material does ChileMine Ltd produce and supply?",
+      "gold_targets": [
+        "lithium carbonate",
+        "lithium carbonate and lithium hydroxide"
+      ],
+      "model_response": "I do not have information on a company called \"ChileMine Ltd.\" However, I can suggest some major mining companies in Chile:\n\n1. Antofagasta PLC (LSE: ANF.L) - Copper\n2. Codelco (SMA: SMLC.L) - Copper\n3. Anglo American plc (LSE: AAL.L) - Copper, Lithium",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 0.0,
+      "rougeL": 0.0444,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.86
+    },
+    {
+      "id": "ex_009",
+      "input": "ChileMine Ltd halts today. KoreanCell Co has 7 days safety stock and 21-day alternate lead time. How many days of production gap does KoreanCell face?",
+      "gold_targets": [
+        "14 days",
+        "14",
+        "14 days of production gap"
+      ],
+      "model_response": "To calculate the production gap, we need to consider both the safety stock and the alternate lead time.\n\nSafety Stock = 7 days\nAlternate Lead Time = 21 days\n\nProduction Gap = Safety Stock + Alternate Lead Time\n= 7 days + 21 days\n= 28 days\n\nKoreanCell Co faces a 28-day production gap.",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 2.69,
+      "rougeL": 0.1132,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 9.82
+    },
+    {
+      "id": "ex_010",
+      "input": "A supplier has surge capacity multiplier 1.5x and normal output 40000 tonnes/year. What is maximum surge output?",
+      "gold_targets": [
+        "60000 tonnes",
+        "60000",
+        "60,000 tonnes per year"
+      ],
+      "model_response": "To find the maximum surge output, multiply the normal output by the surge capacity multiplier.\n\nMaximum Surge Output = Normal Output * Surge Capacity Multiplier\n= 40,000 tonnes/year * 1.5x\n= 60,000 tonnes/year",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 4.09,
+      "rougeL": 0.2105,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 7.35
+    }
+  ]
+}

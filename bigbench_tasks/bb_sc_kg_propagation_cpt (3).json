@@ -1,0 +1,139 @@
+{
+  "task": "Supply Chain Risk Propagation Chains",
+  "metrics": [
+    "bleu",
+    "rouge"
+  ],
+  "results": [
+    {
+      "id": "ex_001",
+      "input": "Which entity is most immediately affected by a production halt at ChileMine Ltd?",
+      "gold_targets": [
+        "KoreanCell Co",
+        "KoreanCell Co is immediately affected"
+      ],
+      "model_response": "Based on my knowledge, I would say that the entity most immediately affected by a production halt at ChileMine Ltd would be:\n\n**Global Semiconductor Co. (GSC)**\n\nReasoning:\n- GSC relies heavily on ChileMine Ltd for sourcing Lithium (Li) for their battery production.\n- Lithium is a critical component in many electronic devices, including smartphones, laptops, and electric vehicles.",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 2.27,
+      "rougeL": 0.0656,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.26
+    },
+    {
+      "id": "ex_002",
+      "input": "ChileMine Ltd stops supplying lithium carbonate. Which downstream company is first affected?",
+      "gold_targets": [
+        "KoreanCell Co",
+        "KoreanCell Co is the first downstream entity affected"
+      ],
+      "model_response": "Based on my knowledge cutoff in 2023, I can provide the following information.\n\nChileMine Ltd supplies lithium to Albemarle (previously known as Lithium Corporation). \n\nAlbemarle is a major producer of lithium carbonate, which is used in various applications such as batteries for electric vehicles and renewable energy systems.\n\nTherefore, if ChileMine Ltd stops supplying lithium carbonate, Alb",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 1.82,
+      "rougeL": 0.0308,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.62
+    },
+    {
+      "id": "ex_003",
+      "input": "Through which intermediate company does ChileMine Ltd disruption propagate downstream?",
+      "gold_targets": [
+        "KoreanCell Co",
+        "KoreanCell Co"
+      ],
+      "model_response": "I cannot provide information about a specific company called \"ChileMine Ltd\" as it is not a known entity in my database. If you can provide more context or clarify the actual name of the company, I'll be happy to help.",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 0.0,
+      "rougeL": 0.0,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 6.9
+    },
+    {
+      "id": "ex_004",
+      "input": "KoreanCell Co depends on which upstream supplier for lithium carbonate?",
+      "gold_targets": [
+        "ChileMine Ltd",
+        "ChileMine Ltd is the upstream supplier"
+      ],
+      "model_response": "I cannot provide information about specific companies or their suppliers without more context. However, I can tell you that some major suppliers of lithium carbonate include:\n\n- Albemarle (USA)\n- FMC Lithium (USA)\n- Galaxy Resources (Australia)\n- Jiangxi Tunguska (China)\n- SQM (Chile)\n\nPlease note that the dependency may change over time due to various",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 1.47,
+      "rougeL": 0.0351,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.9
+    },
+    {
+      "id": "ex_005",
+      "input": "ChileMine Ltd has a geopolitical risk score of 6.2 and is the sole supplier to KoreanCell Co. Describe the supply risk this creates.",
+      "gold_targets": [
+        "KoreanCell Co faces critical supply risk due to sole-source dependency on ChileMine Ltd",
+        "sole-source dependency on a high-risk supplier creates critical risk for KoreanCell Co"
+      ],
+      "model_response": "With a supply risk score of 6.2 for ChileMine Ltd, which is the sole supplier to KoreanCell Co., I would classify the supply risk as \"High\" or \"Critical\".\n\nHere's why:\n\n* A score of 6.2 falls within the \"Significant\" category (scores range from 0-10), indicating that there is a moderate to high level of uncertainty associated",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 3.23,
+      "rougeL": 0.137,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.75
+    },
+    {
+      "id": "ex_006",
+      "input": "A raw material supplier in Chile with risk score 6.2 halts for 30 days. Downstream component manufacturer has 5 days stock and no alternates. How does disruption propagate?",
+      "gold_targets": [
+        "The disruption propagates to the component manufacturer within 5 days causing production halt",
+        "With 5 days safety stock and no alternates, production halts within 5 days"
+      ],
+      "model_response": "Based on the given information:\n\n- Raw material supplier in Chile with a risk score of 6.2 (out of 10) is down for 30 days.\n- Downstream component manufacturer has 5 days of stock and no alternates.\n\nDisruption propagation analysis:\n\n1. **Initial Disruption**: The raw material supplier's halt causes a direct disruption to the production process at the downstream component",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 5.52,
+      "rougeL": 0.2192,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.32
+    },
+    {
+      "id": "ex_007",
+      "input": "What type of supply chain dependency does ChileMine Ltd \u2192 KoreanCell Co represent?",
+      "gold_targets": [
+        "sole-source dependency",
+        "single-source supply dependency",
+        "sole-source supply relationship"
+      ],
+      "model_response": "Based on my knowledge, I would categorize the supply chain dependency between ChileMine Ltd \u2192 KoreanCell Co as a \"Material Dependency\" with a risk score of 0.75.\n\nHere's the breakdown:\n\n- **Entity Type:** Material Dependency (since ChileMine Ltd is likely a supplier of raw materials or components to KoreanCell Co)\n- **Risk Score:** 0.75 (out of",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 1.62,
+      "rougeL": 0.0667,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 10.52
+    },
+    {
+      "id": "ex_008",
+      "input": "A tier-3 raw material disruption propagates to tier-2 then tier-1. What is this pattern called?",
+      "gold_targets": [
+        "supply chain ripple effect",
+        "upstream supply disruption propagation",
+        "multi-tier disruption propagation"
+      ],
+      "model_response": "This pattern is known as a \"Cascade Failure\" or more specifically, a \"Tiered Disruption Cascade\".",
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "bleu": 0.0,
+      "rougeL": 0.2105,
+      "exact_str_match": 0,
+      "partial_exact_match": 0,
+      "latency_s": 3.73
+    }
+  ]
+}

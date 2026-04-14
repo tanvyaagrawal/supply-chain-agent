@@ -1,0 +1,149 @@
+source,target,relation,source_doc,attributes_json
+doc_ev_battery_chain.json,ChileMine Ltd,HAS_RAW_MATERIAL_SUPPLIER,doc_ev_battery_chain.json,{}
+doc_ev_battery_chain.json,KoreanCell Co,HAS_COMPONENT_MANUFACTURER,doc_ev_battery_chain.json,{}
+doc_ev_battery_chain.json,AutoNova Inc,HAS_MANUFACTURER,doc_ev_battery_chain.json,{}
+doc_ev_battery_chain.json,Chile water restriction 6 months,HAS_RISK_EVENT,doc_ev_battery_chain.json,{}
+doc_ev_battery_chain.json,KoreanCell cyberattack on OT,HAS_RISK_EVENT,doc_ev_battery_chain.json,{}
+ChileMine Ltd,KoreanCell Co,SUPPLIES,doc_ev_battery_chain.json,"{""material"": ""lithium carbonate"", ""share"": 0.65}"
+KoreanCell Co,AutoNova Inc,SUPPLIES,doc_ev_battery_chain.json,"{""component"": ""lithium-ion cells"", ""share"": 1.0}"
+AutoNova Inc,ElectroVan EV Battery Pack,ASSEMBLES,doc_ev_battery_chain.json,{}
+doc_ev_battery_chain.json,EU_Battery_Regulation_2023,HAS_REGULATION,doc_ev_battery_chain.json,{}
+EU_Battery_Regulation_2023,ChileMine Ltd,REGULATES,doc_ev_battery_chain.json,{}
+EU_Battery_Regulation_2023,KoreanCell Co,REGULATES,doc_ev_battery_chain.json,{}
+EU_Battery_Regulation_2023,AutoNova Inc,REGULATES,doc_ev_battery_chain.json,{}
+Chile water restriction 6 months,ChileMine Ltd,AFFECTS,doc_ev_battery_chain.json,{}
+Chile water restriction 6 months,KoreanCell Co,AFFECTS,doc_ev_battery_chain.json,{}
+Chile water restriction 6 months,AutoNova Inc,AFFECTS,doc_ev_battery_chain.json,{}
+KoreanCell Co,AutoNova Inc,CUSTOMER_OF_SUPPLIER,doc_ev_battery_chain.json,{}
+KoreanCell Co,ElectroCar UK,CUSTOMER_OF_SUPPLIER,doc_ev_battery_chain.json,{}
+doc_foodcorp_packaging.json,PackPlast Vietnam,HAS_PACKAGING_SUPPLIER,doc_foodcorp_packaging.json,{}
+doc_foodcorp_packaging.json,FoodCorp USA,HAS_FOOD_MANUFACTURER,doc_foodcorp_packaging.json,{}
+doc_foodcorp_packaging.json,PharmaPack EU,HAS_PHARMA_MANUFACTURER,doc_foodcorp_packaging.json,{}
+doc_foodcorp_packaging.json,ISO 22000 Mandate,HAS_REGULATORY_EVENT,doc_foodcorp_packaging.json,{}
+PackPlast Vietnam,FoodCorp USA,SUPPLIES,doc_foodcorp_packaging.json,"{""material"": ""food-grade packaging"", ""volume_share"": 0.8}"
+PackPlast Vietnam,PharmaPack EU,SUPPLIES,doc_foodcorp_packaging.json,"{""material"": ""pharmaceutical packaging"", ""volume_share"": 0.9}"
+ISO 22000 Mandate,PackPlast Vietnam,REGULATES,doc_foodcorp_packaging.json,{}
+ISO 22000 Mandate,FoodCorp USA,REGULATES,doc_foodcorp_packaging.json,{}
+ISO 22000 Mandate,PharmaPack EU,REGULATES,doc_foodcorp_packaging.json,{}
+PackPlast Vietnam,FoodCorp USA,CUSTOMER_OF_SUPPLIER,doc_foodcorp_packaging.json,{}
+PackPlast Vietnam,PharmaPack EU,CUSTOMER_OF_SUPPLIER,doc_foodcorp_packaging.json,{}
+doc_houston_petrochem.json,Houston Petrochem Complex,DESCRIBES,doc_houston_petrochem.json,{}
+Houston Petrochem Complex,Plastics,SUPPLIES_INDUSTRY,doc_houston_petrochem.json,"{""chemicals"": [""ethylene"", ""propylene""], ""impact"": ""HIGH""}"
+Houston Petrochem Complex,Automotive,SUPPLIES_INDUSTRY,doc_houston_petrochem.json,"{""chemicals"": [""synthetic rubber (butadiene)"", ""nylon""], ""impact"": ""HIGH""}"
+Houston Petrochem Complex,Pharmaceuticals,SUPPLIES_INDUSTRY,doc_houston_petrochem.json,"{""chemicals"": [""ethylene oxide"", ""propylene glycol""], ""impact"": ""MEDIUM-HIGH""}"
+Houston Petrochem Complex,Hurricane Harvey 2017,HAD_DISRUPTION,doc_houston_petrochem.json,{}
+doc_la_port_strike.json,Port of Los Angeles / Long Beach,DESCRIBES,doc_la_port_strike.json,{}
+doc_maersk_cyber.json,MaerskLogistics,DESCRIBES,doc_maersk_cyber.json,{}
+MaerskLogistics,Toyota Europe,SERVES_JIT_CUSTOMER,doc_maersk_cyber.json,{}
+MaerskLogistics,BMW,SERVES_JIT_CUSTOMER,doc_maersk_cyber.json,{}
+MaerskLogistics,US retail chains,SERVES_JIT_CUSTOMER,doc_maersk_cyber.json,{}
+doc_medequip_bom.json,HealthSystem UK,HAS_HOSPITAL_PROCUREMENT,doc_medequip_bom.json,{}
+doc_medequip_bom.json,Microcontrollers,HAS_COMPONENT,doc_medequip_bom.json,{}
+doc_medequip_bom.json,Aluminum Casing,HAS_COMPONENT,doc_medequip_bom.json,{}
+doc_medequip_bom.json,Oxygen Sensors,HAS_COMPONENT,doc_medequip_bom.json,{}
+doc_medequip_bom.json,Plastic Tubing,HAS_COMPONENT,doc_medequip_bom.json,{}
+doc_medequip_bom.json,MedEquip Ltd,DESCRIBES,doc_medequip_bom.json,{}
+doc_medequip_bom.json,MK-7 Ventilator,DESCRIBES,doc_medequip_bom.json,{}
+MedEquip Ltd,MK-7 Ventilator,MANUFACTURES,doc_medequip_bom.json,{}
+TaiwanChip-3,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""microcontrollers""}"
+RussiaMetals Corp,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""aluminum casing""}"
+GermanSens GmbH,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""oxygen sensors"", ""sensor_inventory_days"": 60}"
+PetroChemSA Brazil,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""plastic tubing""}"
+MedEquip Ltd,HealthSystem UK,RELATED_TO,doc_medequip_bom.json,"{""product"": ""ventilators""}"
+Microcontrollers,MK-7 Ventilator,COMPONENT_OF,doc_medequip_bom.json,"{""criticality"": ""CRITICAL""}"
+TaiwanChip-3,Microcontrollers,SUPPLIES_COMPONENT,doc_medequip_bom.json,"{""origin"": ""Taiwan"", ""risk_score"": 5}"
+TaiwanChip-3,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""Microcontrollers""}"
+Aluminum Casing,MK-7 Ventilator,COMPONENT_OF,doc_medequip_bom.json,"{""criticality"": ""HIGH""}"
+RussiaMetals Corp,Aluminum Casing,SUPPLIES_COMPONENT,doc_medequip_bom.json,"{""origin"": ""Russia"", ""risk_score"": 8}"
+RussiaMetals Corp,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""Aluminum Casing""}"
+Oxygen Sensors,MK-7 Ventilator,COMPONENT_OF,doc_medequip_bom.json,"{""criticality"": ""HIGH""}"
+GermanSens GmbH,Oxygen Sensors,SUPPLIES_COMPONENT,doc_medequip_bom.json,"{""origin"": ""Germany"", ""risk_score"": 2}"
+GermanSens GmbH,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""Oxygen Sensors""}"
+Plastic Tubing,MK-7 Ventilator,COMPONENT_OF,doc_medequip_bom.json,"{""criticality"": ""MEDIUM""}"
+PetroChemSA Brazil,Plastic Tubing,SUPPLIES_COMPONENT,doc_medequip_bom.json,"{""origin"": ""Brazil"", ""risk_score"": 3}"
+PetroChemSA Brazil,MedEquip Ltd,SUPPLIES,doc_medequip_bom.json,"{""component"": ""Plastic Tubing""}"
+doc_novatech_router.json,MongoliaRE Ltd,HAS_ENTITY,doc_novatech_router.json,{}
+doc_novatech_router.json,JapanMag Co,HAS_ENTITY,doc_novatech_router.json,{}
+doc_novatech_router.json,SingaporeRF Inc,HAS_ENTITY,doc_novatech_router.json,{}
+doc_novatech_router.json,Vietnam PCB Factory,HAS_ENTITY,doc_novatech_router.json,{}
+doc_novatech_router.json,NovaTech Systems,HAS_ENTITY,doc_novatech_router.json,{}
+doc_novatech_router.json,NovaTech Systems,DESCRIBES,doc_novatech_router.json,{}
+doc_novatech_router.json,NovaTech 5G Router,DESCRIBES,doc_novatech_router.json,{}
+NovaTech Systems,NovaTech 5G Router,MANUFACTURES,doc_novatech_router.json,{}
+MongoliaRE Ltd,JapanMag Co,SUPPLIES,doc_novatech_router.json,"{""material"": ""rare earth minerals"", ""buffer_days"": 30}"
+JapanMag Co,SingaporeRF Inc,SUPPLIES,doc_novatech_router.json,"{""material"": ""permanent magnets"", ""buffer_days"": 30}"
+SingaporeRF Inc,Vietnam PCB Factory,SUPPLIES,doc_novatech_router.json,"{""material"": ""RF modules"", ""buffer_days"": 15}"
+Vietnam PCB Factory,NovaTech Systems,SUPPLIES,doc_novatech_router.json,"{""material"": ""PCB assemblies"", ""buffer_days"": 15}"
+MongoliaRE Ltd,"MP Materials (USA, partial)",HAS_QUALIFIED_ALTERNATE,doc_novatech_router.json,{}
+MongoliaRE Ltd,"Lynas Rare Earths (Australia, partial)",HAS_QUALIFIED_ALTERNATE,doc_novatech_router.json,{}
+doc_semiconductor_tariff.json,TaiwanChip-3,HAS_SUPPLIER,doc_semiconductor_tariff.json,{}
+doc_semiconductor_tariff.json,EUChip GmbH,HAS_SUPPLIER,doc_semiconductor_tariff.json,{}
+doc_semiconductor_tariff.json,AlphaBot GmbH,HAS_MANUFACTURER,doc_semiconductor_tariff.json,{}
+doc_semiconductor_tariff.json,NovaTech Systems,HAS_MANUFACTURER,doc_semiconductor_tariff.json,{}
+doc_semiconductor_tariff.json,RoboFlex Ltd,HAS_MANUFACTURER,doc_semiconductor_tariff.json,{}
+doc_semiconductor_tariff.json,ScandiTool AB,HAS_MANUFACTURER,doc_semiconductor_tariff.json,{}
+TaiwanChip-3,AlphaBot GmbH,RELATED_TO,doc_semiconductor_tariff.json,"{""share"": 1.0}"
+TaiwanChip-3,NovaTech Systems,RELATED_TO,doc_semiconductor_tariff.json,"{""share"": 0.8}"
+TaiwanChip-3,RoboFlex Ltd,RELATED_TO,doc_semiconductor_tariff.json,"{""share"": 0.6}"
+EUChip GmbH,RoboFlex Ltd,RELATED_TO,doc_semiconductor_tariff.json,"{""share"": 0.4}"
+TaiwanChip-3,ScandiTool AB,RELATED_TO,doc_semiconductor_tariff.json,"{""share"": 0.15}"
+doc_shanghai_port.json,Port of Shanghai,DESCRIBES,doc_shanghai_port.json,{}
+Port of Shanghai,Us_Consumer_Electronics,IMPACTS_INDUSTRY,doc_shanghai_port.json,"{""days_to_impact"": 7, ""reason"": ""JIT, thin buffer""}"
+Port of Shanghai,European_Automotive,IMPACTS_INDUSTRY,doc_shanghai_port.json,"{""days_to_impact"": 14, ""reason"": ""safety stock 2-3 weeks""}"
+Port of Shanghai,Indian_Textiles,IMPACTS_INDUSTRY,doc_shanghai_port.json,"{""days_to_impact"": 25, ""reason"": ""partial domestic alternatives""}"
+doc_shipping_routes.json,R1,HAS_ROUTE,doc_shipping_routes.json,{}
+doc_shipping_routes.json,R2,HAS_ROUTE,doc_shipping_routes.json,{}
+doc_shipping_routes.json,R3,HAS_ROUTE,doc_shipping_routes.json,{}
+doc_shipping_routes.json,R4,HAS_ROUTE,doc_shipping_routes.json,{}
+doc_shipping_routes.json,R5,HAS_ROUTE,doc_shipping_routes.json,{}
+doc_shipping_routes.json,R6,HAS_ROUTE,doc_shipping_routes.json,{}
+doc_shipping_routes.json,Suez Canal,HAS_CHOKEPOINT,doc_shipping_routes.json,{}
+doc_shipping_routes.json,Strait of Malacca,HAS_CHOKEPOINT,doc_shipping_routes.json,{}
+doc_shipping_routes.json,Port of Shanghai,HAS_CHOKEPOINT,doc_shipping_routes.json,{}
+R1,"Mumbai, India",ROUTE_FROM,doc_shipping_routes.json,{}
+R1,"Hamburg, Germany",ROUTE_TO,doc_shipping_routes.json,{}
+R1,Suez Canal,ROUTE_VIA,doc_shipping_routes.json,{}
+R2,"Mumbai, India",ROUTE_FROM,doc_shipping_routes.json,{}
+R2,"Hamburg, Germany",ROUTE_TO,doc_shipping_routes.json,{}
+R2,Cape of Good Hope,ROUTE_VIA,doc_shipping_routes.json,{}
+R3,"Halifax, Canada",ROUTE_FROM,doc_shipping_routes.json,{}
+R3,"Hamburg, Germany",ROUTE_TO,doc_shipping_routes.json,{}
+R3,North Atlantic,ROUTE_VIA,doc_shipping_routes.json,{}
+R4,"Santos, Brazil",ROUTE_FROM,doc_shipping_routes.json,{}
+R4,"Hamburg, Germany",ROUTE_TO,doc_shipping_routes.json,{}
+R4,South Atlantic,ROUTE_VIA,doc_shipping_routes.json,{}
+R5,"Mumbai, India",ROUTE_FROM,doc_shipping_routes.json,{}
+R5,"Gothenburg, Sweden",ROUTE_TO,doc_shipping_routes.json,{}
+R5,Suez Canal,ROUTE_VIA,doc_shipping_routes.json,{}
+R6,"Mumbai, India",ROUTE_FROM,doc_shipping_routes.json,{}
+R6,"New York, USA",ROUTE_TO,doc_shipping_routes.json,{}
+R6,Suez + Atlantic,ROUTE_VIA,doc_shipping_routes.json,{}
+SteelCo India,R1,USES_PRIMARY_ROUTE,doc_shipping_routes.json,{}
+SteelCo India,R2,USES_BACKUP_ROUTE,doc_shipping_routes.json,{}
+CanAlum Canada,R3,USES_PRIMARY_ROUTE,doc_shipping_routes.json,{}
+BrazilSteel,R4,USES_PRIMARY_ROUTE,doc_shipping_routes.json,{}
+doc_steel_cbam.json,SteelCo India,HAS_STEEL_PRODUCER,doc_steel_cbam.json,{}
+doc_steel_cbam.json,CanAlum Canada,HAS_ALUMINUM_PRODUCER,doc_steel_cbam.json,{}
+doc_steel_cbam.json,BrazilSteel,HAS_STEEL_PRODUCER,doc_steel_cbam.json,{}
+doc_steel_cbam.json,AutoNova Germany,HAS_AUTOMOTIVE_MANUFACTURER,doc_steel_cbam.json,{}
+doc_steel_cbam.json,EU CBAM,HAS_REGULATORY_EVENT,doc_steel_cbam.json,{}
+SteelCo India,AutoNova Germany,SUPPLIES,doc_steel_cbam.json,"{""material"": ""steel"", ""volume_share"": 0.35}"
+CanAlum Canada,AutoNova Germany,SUPPLIES,doc_steel_cbam.json,"{""material"": ""aluminum"", ""volume_share"": 0.35}"
+BrazilSteel,AutoNova Germany,SUPPLIES,doc_steel_cbam.json,"{""material"": ""steel"", ""volume_share"": 0.3}"
+EU CBAM,SteelCo India,REGULATES,doc_steel_cbam.json,{}
+EU CBAM,CanAlum Canada,REGULATES,doc_steel_cbam.json,{}
+EU CBAM,BrazilSteel,REGULATES,doc_steel_cbam.json,{}
+EU CBAM,AutoNova Germany,REGULATES,doc_steel_cbam.json,{}
+doc_taiwan_supplier.json,TaiwanChip-3,HAS_SUPPLIER,doc_taiwan_supplier.json,{}
+doc_taiwan_supplier.json,AlphaBot GmbH,HAS_MANUFACTURER,doc_taiwan_supplier.json,{}
+doc_taiwan_supplier.json,RoboFlex Ltd,HAS_MANUFACTURER,doc_taiwan_supplier.json,{}
+doc_taiwan_supplier.json,Taiwan Strait tension,HAS_RISK_EVENT,doc_taiwan_supplier.json,{}
+doc_taiwan_supplier.json,Magnitude 6+ earthquake,HAS_RISK_EVENT,doc_taiwan_supplier.json,{}
+doc_taiwan_supplier.json,Typhoon season disruption,HAS_RISK_EVENT,doc_taiwan_supplier.json,{}
+TaiwanChip-3,AlphaBot GmbH,SUPPLIES,doc_taiwan_supplier.json,"{""component"": ""GPU chips"", ""share"": 1.0}"
+TaiwanChip-3,RoboFlex Ltd,SUPPLIES,doc_taiwan_supplier.json,"{""component"": ""microcontrollers"", ""share"": 0.6}"
+EUChip GmbH,RoboFlex Ltd,SUPPLIES,doc_taiwan_supplier.json,"{""component"": ""microcontrollers"", ""share"": 0.4}"
+TaiwanChip-3,AlphaBot GmbH,CUSTOMER_OF_SUPPLIER,doc_taiwan_supplier.json,{}
+TaiwanChip-3,RoboFlex Ltd,CUSTOMER_OF_SUPPLIER,doc_taiwan_supplier.json,{}
+TaiwanChip-3,NovaTech Systems,CUSTOMER_OF_SUPPLIER,doc_taiwan_supplier.json,{}
+TaiwanChip-3,"EUChip GmbH (partial, 40% capacity cover)",HAS_BACKUP_SUPPLIER,doc_taiwan_supplier.json,{}

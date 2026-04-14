@@ -1,0 +1,82 @@
+{
+  "method_A": "cond_log_prob (official BIG-Bench MCQ scoring)",
+  "method_B": "generative_mcq_grade (factual recall \u2014 CPT advantage signal)",
+  "bigbench_api_used": "bigbench.api.model.Model (abstract base class)",
+  "bigbench_repo": "https://github.com/google/BIG-bench",
+  "baseline": {
+    "sc_kg_entity_knowledge": {
+      "task": "Supply Chain KG Entity Knowledge",
+      "n": 15,
+      "multiple_choice_grade": 0.2667,
+      "generative_mcq_grade": 0.3333,
+      "avg_bleu": null,
+      "avg_rougeL": null,
+      "exact_str_match": null
+    },
+    "sc_risk_level": {
+      "task": "Supply Chain Risk Level Assessment",
+      "n": 20,
+      "multiple_choice_grade": 0.5,
+      "generative_mcq_grade": 0.4,
+      "avg_bleu": null,
+      "avg_rougeL": null,
+      "exact_str_match": null
+    },
+    "sc_kg_numerical_facts": {
+      "task": "Supply Chain KG Numerical Facts",
+      "n": 10,
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "avg_bleu": 1.85,
+      "avg_rougeL": 0.0622,
+      "exact_str_match": 0.0
+    },
+    "sc_kg_propagation": {
+      "task": "Supply Chain Risk Propagation Chains",
+      "n": 8,
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "avg_bleu": 1.88,
+      "avg_rougeL": 0.1203,
+      "exact_str_match": 0.0
+    }
+  },
+  "cpt": {
+    "sc_kg_entity_knowledge": {
+      "task": "Supply Chain KG Entity Knowledge",
+      "n": 15,
+      "multiple_choice_grade": 0.2667,
+      "generative_mcq_grade": 0.4,
+      "avg_bleu": null,
+      "avg_rougeL": null,
+      "exact_str_match": null
+    },
+    "sc_risk_level": {
+      "task": "Supply Chain Risk Level Assessment",
+      "n": 20,
+      "multiple_choice_grade": 0.5,
+      "generative_mcq_grade": 0.45,
+      "avg_bleu": null,
+      "avg_rougeL": null,
+      "exact_str_match": null
+    },
+    "sc_kg_numerical_facts": {
+      "task": "Supply Chain KG Numerical Facts",
+      "n": 10,
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "avg_bleu": 2.14,
+      "avg_rougeL": 0.0713,
+      "exact_str_match": 0.0
+    },
+    "sc_kg_propagation": {
+      "task": "Supply Chain Risk Propagation Chains",
+      "n": 8,
+      "multiple_choice_grade": null,
+      "generative_mcq_grade": null,
+      "avg_bleu": 1.99,
+      "avg_rougeL": 0.0956,
+      "exact_str_match": 0.0
+    }
+  }
+}

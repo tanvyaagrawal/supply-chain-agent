@@ -15,3 +15,9 @@ outputs/
 !dataset/graph/
 !configs/config.yaml
 .DS_Store
+outputs/llama32_supplychain_cpt/
+cpt_corpus_from_kg.jsonl
+cpt_corpus_from_kg_expanded.jsonl
+__pycache__/
+.ipynb_checkpoints/
+*.pyc

@@ -1,0 +1,348 @@
+{
+  "task": "Supply Chain Risk Level Assessment",
+  "metrics": [
+    "multiple_choice_grade"
+  ],
+  "results": [
+    {
+      "id": "ex_001",
+      "input": "ChileMine Ltd (raw_material_supplier, geopolitical risk score 6.2/10) halts all lithium carbonate shipments. KoreanCell Co depends solely on ChileMine Ltd and has 5 days safety stock. What is the risk level?",
+      "gold_choice": "Critical",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -19.125,
+        "Medium": -13.9375,
+        "High": -15.375,
+        "Critical": -10.25
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_002",
+      "input": "A tier-3 raw material supplier with geopolitical risk score 2.1 delays delivery by 2 days. The downstream buyer has 30 days buffer and 3 qualified alternates. Risk level?",
+      "gold_choice": "Low",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -13.75,
+        "Medium": -9.4375,
+        "High": -14.625,
+        "Critical": -10.9375
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_003",
+      "input": "A component manufacturer in South Korea (geopolitical risk score 4.5) faces a 30-day production halt. Its sole customer has 7 days safety stock and no qualified alternate suppliers. Risk level?",
+      "gold_choice": "High",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -17.375,
+        "Medium": -12.625,
+        "High": -14.9375,
+        "Critical": -10.0
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_004",
+      "input": "A lithium carbonate supplier with 45000 tonnes annual output halts production indefinitely due to sanctions. It is the sole global supplier of this grade. Risk level for downstream battery manufacturers?",
+      "gold_choice": "Critical",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -21.125,
+        "Medium": -15.4375,
+        "High": -16.25,
+        "Critical": -10.1875
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_005",
+      "input": "Export controls target a region supplying 5% of global copper. Three qualified alternate suppliers exist globally. Downstream manufacturers have 20-day buffer stock. Risk level?",
+      "gold_choice": "Low",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -12.5625,
+        "Medium": -9.3125,
+        "High": -14.625,
+        "Critical": -11.3125
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_006",
+      "input": "A component manufacturer's ERP system goes offline for 48 hours due to a cybersecurity breach. Orders can be placed manually. Buffer stock covers 12 days. Risk level?",
+      "gold_choice": "Medium",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -13.8125,
+        "Medium": -9.8125,
+        "High": -14.6875,
+        "Critical": -10.5625
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_007",
+      "input": "A sole-source tier-3 lithium supplier with high geopolitical risk declares force majeure for 90 days. Downstream tier-1 has 7 days stock. No qualified alternates exist. Risk level?",
+      "gold_choice": "Critical",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -18.25,
+        "Medium": -12.75,
+        "High": -15.0625,
+        "Critical": -10.0625
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_008",
+      "input": "Port congestion adds a 5-day delay to a regular shipment. The manufacturer has 18 days buffer stock and two alternative ports. Risk level?",
+      "gold_choice": "Medium",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -12.75,
+        "Medium": -9.4375,
+        "High": -15.375,
+        "Critical": -11.5625
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_009",
+      "input": "A raw material supplier with surge capacity multiplier 1.5x faces a partial disruption at 60% capacity. A downstream manufacturer with 10 days safety stock and one qualified alternate. Risk level?",
+      "gold_choice": "Medium",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -14.4375,
+        "Medium": -9.6875,
+        "High": -14.4375,
+        "Critical": -10.6875
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_010",
+      "input": "A tier-1 automotive manufacturer (sole customer of a key components supplier) receives notice that its supplier will shut down in 72 hours. The manufacturer has 3 days safety stock and no alternates. Risk level?",
+      "gold_choice": "Critical",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -19.25,
+        "Medium": -13.5625,
+        "High": -15.375,
+        "Critical": -9.9375
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_011",
+      "input": "A logistics provider raises freight rates by 12%. Four alternative carriers are available at similar rates. Lead times remain unchanged. Risk level?",
+      "gold_choice": "Low",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -14.125,
+        "Medium": -10.0,
+        "High": -14.6875,
+        "Critical": -10.75
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_012",
+      "input": "A tier-2 supplier faces a 45-day labor strike. The tier-1 that depends on it has 8 days buffer. Two qualified alternates each supply 40% of volume. Risk level?",
+      "gold_choice": "High",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -14.75,
+        "Medium": -9.625,
+        "High": -14.75,
+        "Critical": -11.0
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_013",
+      "input": "Currency devaluation increases procurement costs by 38% from a key overseas sole-source supplier. No domestic alternative exists. Risk level?",
+      "gold_choice": "High",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -18.625,
+        "Medium": -13.5,
+        "High": -15.25,
+        "Critical": -10.0
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_014",
+      "input": "A quality audit failure requires re-inspection of 3% defective inventory. Buffer stock covers 25 days. The supplier can resume full production in 5 days. Risk level?",
+      "gold_choice": "Low",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -14.125,
+        "Medium": -9.75,
+        "High": -14.375,
+        "Critical": -10.75
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_015",
+      "input": "Natural disaster destroys a sole-source facility producing a critical assembly component with 24-month rebuild time. No alternative production sites exist globally. Risk level?",
+      "gold_choice": "Critical",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -21.75,
+        "Medium": -15.8125,
+        "High": -16.5,
+        "Critical": -9.9375
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_016",
+      "input": "A semiconductor fab reduces output by 15% due to maintenance. Three alternative fabs can absorb additional orders. Buyer has 30 days inventory. Risk level?",
+      "gold_choice": "Low",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -13.5625,
+        "Medium": -9.4375,
+        "High": -14.8125,
+        "Critical": -11.1875
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_017",
+      "input": "Geopolitical tensions cause a country providing 65% of global neon gas to impose export restrictions. Semiconductor fabs need neon for lithography. Alternative sources cover only 20% of demand. Risk level?",
+      "gold_choice": "Critical",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -19.5,
+        "Medium": -13.625,
+        "High": -15.0,
+        "Critical": -10.125
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_018",
+      "input": "A cybersecurity breach at a logistics provider disrupts real-time shipment tracking for 72 hours. Physical shipments are unaffected. Buffer stock covers 15 days. Risk level?",
+      "gold_choice": "Medium",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -14.5,
+        "Medium": -9.6875,
+        "High": -14.6875,
+        "Critical": -10.4375
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_019",
+      "input": "A tier-3 steel supplier with a risk score of 3.2/10 delays a standard shipment by 4 days. Two qualified alternates exist. Buyer has 21 days buffer. Risk level?",
+      "gold_choice": "Low",
+      "predicted_choice": "Medium",
+      "multiple_choice_grade": 0,
+      "log_probs": {
+        "Low": -13.375,
+        "Medium": -9.3125,
+        "High": -14.75,
+        "Critical": -11.3125
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    },
+    {
+      "id": "ex_020",
+      "input": "Sanctions are imposed on a country supplying 80% of global lithium hydroxide. No qualified alternate producers exist at the required purity grade. Downstream battery manufacturers have 10 days stock. Risk level?",
+      "gold_choice": "Critical",
+      "predicted_choice": "Critical",
+      "multiple_choice_grade": 1,
+      "log_probs": {
+        "Low": -18.0,
+        "Medium": -13.0625,
+        "High": -14.875,
+        "Critical": -9.9375
+      },
+      "bleu": null,
+      "rougeL": null,
+      "exact_str_match": null,
+      "latency_s": null
+    }
+  ]
+}
