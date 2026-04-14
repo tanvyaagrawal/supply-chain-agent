@@ -1,6 +1,5 @@
 """
 hf_bigbench_model.py — THE BRIDGING FILE
-==========================================
 Bridges HuggingFace 4-bit quantised LLM to the official BIG-Bench Model API.
 https://github.com/google/BIG-bench
 
