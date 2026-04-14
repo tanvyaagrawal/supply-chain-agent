@@ -230,3 +230,58 @@ Measures how effectively the agent uses context relative to tokens consumed.
 - Trade-off exists between:
   - accuracy and reliability
   - efficiency and cost
+### Context Benchmarking (Our Approach)
+Evaluate how different context strategies impact the agent’s performance in terms of **accuracy, efficiency, cost, and latency**.
+#### Implementation Overview
+- Used the same **task dataset (`tasks.json`)** as in agent benchmarking  
+- Reused:
+  - **Baseline (RAG-style) agent**
+  - **Neurosymbolic (Graph-based) agent**
+- Designed experiments to test how changing **context input** affects performance  
+#### Context Policies Implemented
+We evaluated multiple context strategies:
+- **Full Context Policy**
+  - Retrieved top-k documents and passed full text
+  - Maximum information available to the model
+- **Reduced Context Policy**
+  - Limited number of documents / truncated text
+  - Simulates token-constrained scenarios
+- **Graph-only Policy**
+  - Used only structured graph evidence (no document text)
+  - Focused on symbolic reasoning
+- **Hybrid Policy**
+  - Combined graph evidence + document context
+  - Balanced reasoning and completeness
+#### Experiment Process
+For each policy:
+1. Retrieve context based on the policy  
+2. Construct prompt using the selected context  
+3. Run the model to generate responses  
+4. Store:
+   - Response
+   - Token usage (input/output)
+   - Latency  
+#### Evaluation Method
+Used the **custom evaluator** to compute:
+- **Task Success Rate** → based on criteria + entity + score thresholds  
+- **Hallucination Rate** → especially on trap tasks  
+- **Reasoning Accuracy** → multi-hop reasoning quality  
+- **Context Efficiency** → relevance of used context  
+- **Token Usage** → input, output, total tokens  
+- **Latency** → response time  
+- **Cost per Query** → estimated from token usage  
+#### Key Observations
+- Full context improves success rate but increases **tokens and latency**  
+- Reduced context lowers cost but can miss important details  
+- Graph-only improves **structured reasoning** but may lack completeness  
+- Hybrid policy provides the **best balance across all metrics**  
+#### Results
+<img width="1780" height="423" alt="image" src="https://github.com/user-attachments/assets/e8d5606d-696b-42c3-86a5-db56da5985b6" />
+<img width="1785" height="401" alt="image" src="https://github.com/user-attachments/assets/8dbed460-f6fd-46c9-8c7d-82ce77f96da1" />
+- Policy-wise comparison (success rate vs tokens)  
+- Context efficiency comparison  
+- Latency and cost comparison  
+- Any important trade-off graphs  
+####  Conclusion
+The experiments show that performance depends heavily on **how context is selected and structured**.  
+Efficient context strategies (especially hybrid approaches) can achieve strong performance while keeping **cost and latency under control**.
