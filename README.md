@@ -217,6 +217,7 @@ Measures how effectively the agent uses context relative to tokens consumed.
 - **Refusal accuracy becomes perfect (1.0)** → strong safety behavior
 - **Reasoning accuracy improves**, especially for multi-hop queries
 - Graph agent produces more **grounded and reliable responses**
+<img width="945" height="377" alt="image" src="https://github.com/user-attachments/assets/f039f161-99ce-4ff2-951f-2ec0380ef892" />
 
 ### Trade-offs
 - Higher latency (+4 seconds per query)
