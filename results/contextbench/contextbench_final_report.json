@@ -1,0 +1,72 @@
+{
+  "experiment_name": "supply_chain_context_benchmark",
+  "dataset": "/content/tasks.json",
+  "policies": [
+    "full_text",
+    "reduced_text",
+    "graph_only",
+    "hybrid"
+  ],
+  "metrics": [
+    "hallucination_rate",
+    "task_success_rate",
+    "avg_total_tokens",
+    "avg_cost_per_query",
+    "avg_latency_s",
+    "avg_context_efficiency"
+  ],
+  "summaries": [
+    {
+      "policy": "full_text",
+      "num_tasks": 40,
+      "task_success_rate": 0.175,
+      "avg_task_success_score": 0.3266,
+      "hallucination_rate": 0.0,
+      "avg_input_tokens": 1157.62,
+      "avg_output_tokens": 141.62,
+      "avg_total_tokens": 1299.25,
+      "avg_cost_per_query": 0.001441,
+      "avg_latency_s": 15.912,
+      "avg_context_efficiency": 0.241674
+    },
+    {
+      "policy": "reduced_text",
+      "num_tasks": 40,
+      "task_success_rate": 0.175,
+      "avg_task_success_score": 0.3367,
+      "hallucination_rate": 0.0,
+      "avg_input_tokens": 666.15,
+      "avg_output_tokens": 128.78,
+      "avg_total_tokens": 794.92,
+      "avg_cost_per_query": 0.000924,
+      "avg_latency_s": 11.934,
+      "avg_context_efficiency": 0.437234
+    },
+    {
+      "policy": "graph_only",
+      "num_tasks": 40,
+      "task_success_rate": 0.2,
+      "avg_task_success_score": 0.3405,
+      "hallucination_rate": 0.0,
+      "avg_input_tokens": 861.05,
+      "avg_output_tokens": 131.88,
+      "avg_total_tokens": 992.92,
+      "avg_cost_per_query": 0.001125,
+      "avg_latency_s": 12.774,
+      "avg_context_efficiency": 0.390475
+    },
+    {
+      "policy": "hybrid",
+      "num_tasks": 40,
+      "task_success_rate": 0.2,
+      "avg_task_success_score": 0.3516,
+      "hallucination_rate": 0.0,
+      "avg_input_tokens": 1521.28,
+      "avg_output_tokens": 136.4,
+      "avg_total_tokens": 1657.67,
+      "avg_cost_per_query": 0.001794,
+      "avg_latency_s": 15.116,
+      "avg_context_efficiency": 0.228396
+    }
+  ]
+}
