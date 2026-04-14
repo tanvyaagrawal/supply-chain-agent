@@ -1,3 +1,16 @@
+## Project Overview
+A neurosymbolic AI system for supply chain disruption prediction, built on
+Llama-3.2-3B-Instruct on a
+supply chain knowledge graph.
+
+## Pipeline
+1. **Model Benchmarking / CPT Fine-Tuning** — LoRA adapter trained on 1,715
+   KG-derived factual sentences (343 nodes × 5 surface templates)
+2. **TruthfulQA** — Baseline vs CPT model across 200 questions
+3. **BIG-Bench** — 4 custom supply-chain tasks via official BIG-Bench API bridge
+4. **Agent Benchmarking** — Baseline RAG vs Neurosymbolic (KG + symbolic rules) agent
+5. **Context Benchmarking** — 4 retrieval policies: full_text, reduced_text, graph_only, hybrid
+
 ## Model Benchmarking
 ### Base Model
 We use **Llama-3.2-3B-Instruct** as the baseline model for evaluation.
