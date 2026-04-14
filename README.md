@@ -281,7 +281,8 @@ Used the **custom evaluator** to compute:
 - Policy-wise comparison (success rate vs tokens)  
 - Context efficiency comparison  
 - Latency and cost comparison  
-- Any important trade-off graphs  
+- Any important trade-off graphs
+
 ####  Conclusion
 The experiments show that performance depends heavily on **how context is selected and structured**.  
 Efficient context strategies (especially hybrid approaches) can achieve strong performance while keeping **cost and latency under control**.
